@@ -4,21 +4,34 @@
 
 using namespace std;
 
-Program::Program(int numArith, int numStore, int numLoad, int numBranch, int numTotal)
+Program::Program(int numArith, int numStore, int numLoad, int numBranch)
 {
-    //ctor
     m_numArith	= numArith;
     m_numStore	= numStore;
     m_numLoad	= numLoad;
     m_numBranch	= numBranch;
-    m_numTotal	= numTotal;
+    m_numTotal	= numArith + numStore + numLoad + numBranch;
 }
 
+// Overloaded constructor for fractions
+Program::Program(int numTotal, double numArith, double numStore, double numLoad)
+{
+    m_numArith	= numArith * 100;
+    m_numStore	= numStore * 100;
+    m_numLoad	= numLoad  * 100;
+    m_numTotal	= numTotal;
+
+    // Number of Branch instructions calculated from known variables
+    m_numBranch	= (1 - (numArith + numStore + numLoad)) * 100;
+}
+
+
 void Program::printStats(){
-    cout << "====Program Stats===="	<< endl;
-    cout << "Arithmetic operations:\t" << m_numArith << endl;
-    cout << "Store operations:\t" << m_numStore << endl;
-    cout << "Load operations:\t" << m_numLoad << endl;
-    cout << "Branch operations:\t" << m_numBranch << endl;
-    cout << "Total operations:\t" << m_numTotal << endl;
+    cout << "====Program Stats===="	    << endl;
+    cout << "Arithmetic operations:\t"  << m_numArith << endl;
+    cout << "Store operations:\t"       << m_numStore << endl;
+    cout << "Load operations:\t"        << m_numLoad << endl;
+    cout << "Branch operations:\t"      << m_numBranch << endl;
+    cout << "-------------------------"	<< endl;
+    cout << "Total operations:\t"       << m_numTotal << endl << endl;
 }

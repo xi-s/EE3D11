@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1486391118 source:/home/rjaspers/git/EE3D11/cao_assignment1/main.cpp
+	<iostream>
+	"computer.h"
+	"program.h"
+
+1486391312 /home/rjaspers/git/EE3D11/cao_assignment1/include/computer.h
+	"program.h"
+
+1486390083 /home/rjaspers/git/EE3D11/cao_assignment1/include/program.h
+
+1486388991 source:/home/rjaspers/git/EE3D11/cao_assignment1/src/program.cpp
+	<iostream>
+	"program.h"
+
+1486391332 source:/home/rjaspers/git/EE3D11/cao_assignment1/src/computer.cpp
+	<iostream>
+	<math.h>
+	"computer.h"
+
