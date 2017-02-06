@@ -9,11 +9,11 @@ class Computer{
 	double m_cpiStore;
 	double m_cpiLoad;
 	double m_cpiBranch;
-    public: 
+    public:
 	// Constructor prototype
 	Computer(double clockRateGHz, double cpiArith, double cpiStore, double cpiLoad, double cpiBranch);
 
-	void printStats(); 
+	void printStats();
 	double calculateGlobalCPI();
 };
 
