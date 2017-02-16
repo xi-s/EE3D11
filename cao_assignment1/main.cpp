@@ -27,5 +27,15 @@ int main(){
 
     //computer3.calculateExecutionTime(program1);
     computer1.calculateMIPS(programA);
+    computer2.calculateMIPS(programA);
+    computer3.calculateMIPS(programA);
+
+    computer1.calculateMIPS(programB);
+    computer2.calculateMIPS(programB);
+    computer3.calculateMIPS(programB);
+
+    computer1.calculateMIPS(programC);
+    computer2.calculateMIPS(programC);
+    computer3.calculateMIPS(programC);
     return 0;
 }

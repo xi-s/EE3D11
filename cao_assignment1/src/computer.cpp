@@ -37,14 +37,14 @@ double Computer::calculateGlobalCPI(){
 
 double Computer::calculateExecutionTime(Program program){
     // T = (I * CPI)/ F;
-    double executionTime = (program.getTotal() * calculateGlobalCPI() )/((this->m_clockRateGHz) * 10e6);
+    double executionTime = (program.getTotal() * calculateGlobalCPI() )/((this->m_clockRateGHz) *  pow(10, 9));
     cout << "Execution time (sec): " << executionTime << endl;
     return executionTime;
 }
 
 double Computer::calculateMIPS(Program program){
-    // MIPS = I / (T * 10e6);
-    double MIPS = program.getTotal() / ((calculateExecutionTime(program) * 10e6));
+    // MIPS = I / (T * 10^6);
+    double MIPS = program.getTotal() / ((calculateExecutionTime(program) * pow(10, 6)));
     cout << "MIPS: " << MIPS << endl;
     return MIPS;
 }

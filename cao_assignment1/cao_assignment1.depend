@@ -18,3 +18,22 @@
 	<math.h>
 	"computer.h"
 
+1487269682 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment1\main.cpp
+	<iostream>
+	"computer.h"
+	"program.h"
+
+1487093653 c:\users\laptop\desktop\git\ee3d11\cao_assignment1\include\computer.h
+	"program.h"
+
+1487093653 c:\users\laptop\desktop\git\ee3d11\cao_assignment1\include\program.h
+
+1487267981 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment1\src\computer.cpp
+	<iostream>
+	<math.h>
+	"computer.h"
+
+1487093653 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment1\src\program.cpp
+	<iostream>
+	"program.h"
+
