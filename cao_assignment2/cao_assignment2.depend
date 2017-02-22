@@ -1,0 +1,51 @@
+# depslib dependency file v1.0
+1487712886 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\main.cpp
+	"simulator.h"
+	"program.h"
+	"registers.h"
+	"AddInstruction.h"
+
+1487705475 c:\users\laptop\desktop\git\ee3d11\cao_assignment2\simulator.h
+	"registers.h"
+	"program.h"
+
+1487712823 c:\users\laptop\desktop\git\ee3d11\cao_assignment2\registers.h
+	<array>
+
+1487705475 c:\users\laptop\desktop\git\ee3d11\cao_assignment2\program.h
+	<vector>
+	"instruction.h"
+	"registers.h"
+
+1487713074 c:\users\laptop\desktop\git\ee3d11\cao_assignment2\instruction.h
+	<iostream>
+	"registers.h"
+
+1487707077 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\program.cpp
+	<vector>
+	"program.h"
+	"instruction.h"
+
+1487708804 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\simulator.cpp
+	<iostream>
+	<string>
+	"simulator.h"
+	"program.h"
+	"registers.h"
+
+1487710171 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\registers.cpp
+	<iostream>
+	"registers.h"
+
+1487713046 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\addinstruction.cpp
+	"addinstruction.h"
+
+1487713023 c:\users\laptop\desktop\git\ee3d11\cao_assignment2\addinstruction.h
+	<instruction.h>
+
+1487711619 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\brneinstruction.cpp
+	"BrneInstruction.h"
+
+1487711619 c:\users\laptop\desktop\git\ee3d11\cao_assignment2\brneinstruction.h
+	<instruction.h>
+
