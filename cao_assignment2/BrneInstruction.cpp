@@ -8,13 +8,10 @@ BrneInstruction::BrneInstruction(int rd, int rs, int rt)
     setRT(rt);
 }
 
-BrneInstruction::~BrneInstruction()
-{
-    //dtor
-}
-
 int BrneInstruction::execute(Registers* Registers){
     disassemble();
+    // If rd == rs, we increment by the immediate value,
+    // else we just increment the program counter with 1
     if(Registers->getRegister(getRD()) != Registers->getRegister(getRS())){
         return Registers->getPC() + 1 + getRT();
     }else{

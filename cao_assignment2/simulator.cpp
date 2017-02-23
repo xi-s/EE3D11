@@ -12,7 +12,6 @@ Simulator::Simulator (Registers *theRegisters, Program *theProgram)
 	program		= theProgram;
 }
 
-
 Simulator::~Simulator ()
 {
 	delete registers;
@@ -29,7 +28,6 @@ void Simulator::help ()
 	cout << "r\tprint registers" << endl;
 	cout << "s\tsingle step program" << endl;
 }
-
 
 void Simulator::ui ()
 {

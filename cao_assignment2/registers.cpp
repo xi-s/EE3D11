@@ -6,13 +6,11 @@ using namespace std;
 
 Registers::Registers ()
 {
-    m_registers[0] = 0;
-    // Initialize program counter to zero
     m_PC = 0;
-
 }
 
 void Registers::setRegister(int regNum, int value){
+    // Make $zero read only
     if(regNum != 0){
           m_registers[regNum] = value;
     }else{

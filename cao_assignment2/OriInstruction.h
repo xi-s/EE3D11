@@ -8,12 +8,7 @@ class OriInstruction : public Instruction
 {
     public:
         OriInstruction(int, int, int);
-        virtual int execute(Registers*);
-        virtual ~OriInstruction();
-
-    protected:
-
-    private:
+        int execute(Registers*);
 };
 
 #endif // ADDINSTRUCTION_H

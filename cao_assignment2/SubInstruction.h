@@ -9,11 +9,6 @@ class SubInstruction : public Instruction
     public:
         SubInstruction(int, int, int);
         virtual int execute(Registers*);
-        virtual ~SubInstruction();
-
-    protected:
-
-    private:
 };
 
 #endif // ADDINSTRUCTION_H

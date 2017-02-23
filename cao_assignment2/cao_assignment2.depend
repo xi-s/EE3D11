@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1487847387 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\main.cpp
+1487870478 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\main.cpp
 	"simulator.h"
 	"program.h"
 	"registers.h"
@@ -12,7 +12,7 @@
 	"registers.h"
 	"program.h"
 
-1487836969 c:\users\laptop\desktop\git\ee3d11\cao_assignment2\registers.h
+1487870651 c:\users\laptop\desktop\git\ee3d11\cao_assignment2\registers.h
 	<array>
 
 1487800234 c:\users\laptop\desktop\git\ee3d11\cao_assignment2\program.h
@@ -20,7 +20,7 @@
 	"instruction.h"
 	"registers.h"
 
-1487836693 c:\users\laptop\desktop\git\ee3d11\cao_assignment2\instruction.h
+1487870687 c:\users\laptop\desktop\git\ee3d11\cao_assignment2\instruction.h
 	<iostream>
 	"registers.h"
 
@@ -29,46 +29,46 @@
 	"program.h"
 	"instruction.h"
 
-1487799598 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\simulator.cpp
+1487870556 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\simulator.cpp
 	<iostream>
 	<string>
 	"simulator.h"
 	"program.h"
 	"registers.h"
 
-1487843943 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\registers.cpp
+1487870442 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\registers.cpp
 	<iostream>
 	<iomanip>
 	"registers.h"
 
-1487844274 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\addinstruction.cpp
+1487870215 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\addinstruction.cpp
 	"addinstruction.h"
 
-1487833302 c:\users\laptop\desktop\git\ee3d11\cao_assignment2\addinstruction.h
+1487870580 c:\users\laptop\desktop\git\ee3d11\cao_assignment2\addinstruction.h
 	<instruction.h>
 	"registers.h"
 
-1487845297 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\brneinstruction.cpp
+1487870236 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\brneinstruction.cpp
 	"brneinstruction.h"
 
-1487839392 c:\users\laptop\desktop\git\ee3d11\cao_assignment2\brneinstruction.h
+1487870593 c:\users\laptop\desktop\git\ee3d11\cao_assignment2\brneinstruction.h
 	<instruction.h>
 	"registers.h"
 
-1487869837 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\instruction.cpp
+1487870506 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\instruction.cpp
 	"instruction.h"
 
-1487835228 c:\users\laptop\desktop\git\ee3d11\cao_assignment2\subinstruction.h
+1487870331 c:\users\laptop\desktop\git\ee3d11\cao_assignment2\subinstruction.h
 	<instruction.h>
 	"registers.h"
 
-1487844284 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\subinstruction.cpp
+1487870324 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\subinstruction.cpp
 	"subinstruction.h"
 
-1487844336 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\oriinstruction.cpp
+1487870197 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment2\oriinstruction.cpp
 	"oriinstruction.h"
 
-1487838051 c:\users\laptop\desktop\git\ee3d11\cao_assignment2\oriinstruction.h
+1487870597 c:\users\laptop\desktop\git\ee3d11\cao_assignment2\oriinstruction.h
 	<instruction.h>
 	"registers.h"
 

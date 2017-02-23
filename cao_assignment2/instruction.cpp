@@ -1,19 +1,12 @@
 #include "instruction.h"
 
-Instruction::Instruction(){
-
-}
-
 void Instruction::disassemble(){
+    // Differentiate printing formats between R and I
     if(!getOperation().compare("ori") || !getOperation().compare("brne")){
         cout << getOperation() << " $" << getRD() << ", $" << getRS() << ", "  << getRT() << endl;
     }else{
         cout << getOperation() << " $" << getRD() << ", $" << getRS() <<", $" << getRT() << endl;
     }
-
-}
-
-int Instruction::execute(Registers*){
 }
 
 string Instruction::getOperation(){

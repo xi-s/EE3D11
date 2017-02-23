@@ -8,12 +8,7 @@ class AddInstruction : public Instruction
 {
     public:
         AddInstruction(int, int, int);
-        virtual int execute(Registers*);
-        virtual ~AddInstruction();
-
-    protected:
-
-    private:
+        int execute(Registers*);
 };
 
 #endif // ADDINSTRUCTION_H

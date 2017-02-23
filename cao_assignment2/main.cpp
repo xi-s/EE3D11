@@ -34,7 +34,6 @@ void loadProgram (Program *program)
 	program->appendInstruction (new BrneInstruction (2, 0, -3));
 }
 
-
 int main (void)
 {
 	Registers *registers	= new Registers ();

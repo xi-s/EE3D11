@@ -8,11 +8,6 @@ AddInstruction::AddInstruction(int rd, int rs, int rt)
     setRT(rt);
 }
 
-AddInstruction::~AddInstruction()
-{
-    //dtor
-}
-
 int AddInstruction::execute(Registers* Registers){
     disassemble();
     // Add rs to rt and store in rd
