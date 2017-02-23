@@ -22,7 +22,7 @@ void loadProgram (Program *program)
         }
 
         $2 goes to zero after decrementing three times.
-        Because this condition is met before executing the addition,
+        Because the while condition is met before executing the next addition,
         The value 12 will be added to $4 only twice.
 
     */
