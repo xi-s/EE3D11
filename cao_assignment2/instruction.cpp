@@ -5,7 +5,12 @@ Instruction::Instruction(){
 }
 
 void Instruction::disassemble(){
-   cout << getOperation() << " rd(" << getRD() << "), rs(" << getRS() <<"), rt(" << getRT() << ")" << endl;
+    if(!getOperation().compare("ori") || !getOperation().compare("brne")){
+        cout << getOperation() << " $" << getRD() << ", $" << getRS() << ", "  << getRT() << endl;
+    }else{
+        cout << getOperation() << " $" << getRD() << ", $" << getRS() <<", $" << getRT() << endl;
+    }
+
 }
 
 int Instruction::execute(Registers*){

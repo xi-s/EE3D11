@@ -14,7 +14,7 @@ AddInstruction::~AddInstruction()
 }
 
 int AddInstruction::execute(Registers* Registers){
-    cout << "Add instruction executed" << endl;
+    disassemble();
     // Add rs to rt and store in rd
     Registers->setRegister(getRD(), Registers->getRegister(getRS()) + Registers->getRegister(getRT()));
     return Registers->getPC() + 1;

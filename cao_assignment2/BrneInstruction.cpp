@@ -14,8 +14,8 @@ BrneInstruction::~BrneInstruction()
 }
 
 int BrneInstruction::execute(Registers* Registers){
-    cout << "Brne instruction executed" << endl;
-    if(getRD() != getRS()){
+    disassemble();
+    if(Registers->getRegister(getRD()) != Registers->getRegister(getRS())){
         return Registers->getPC() + 1 + getRT();
     }else{
          return Registers->getPC() + 1;

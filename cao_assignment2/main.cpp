@@ -9,6 +9,23 @@
 
 void loadProgram (Program *program)
 {
+    /*
+        Probably equivalent to the following pseudocode:
+        $1 contains 12
+        $2 contains 3
+        $3 contains 1
+        $4 contains 12 (initially)
+
+        while($2 != 0){
+            $4 += $1;
+            $2 -= $3;
+        }
+
+        $2 goes to zero after decrementing three times.
+        Because this condition is met before executing the addition,
+        The value 12 will be added to $4 only twice.
+
+    */
     program->appendInstruction (new OriInstruction (1, 0, 12));
 	program->appendInstruction (new OriInstruction (2, 0, 4));
 	program->appendInstruction (new OriInstruction (3, 0, 1));

@@ -14,7 +14,7 @@ OriInstruction::~OriInstruction()
 }
 
 int OriInstruction::execute(Registers* Registers){
-    cout << "Ori instruction executed" << endl;
+    disassemble();
     // Ori content of rs with immediate value of rt and store in rd
     Registers->setRegister(getRD(), Registers->getRegister(getRS()) | getRT());
     return Registers->getPC() + 1;
