@@ -20,14 +20,16 @@ Computer::Computer( double clockRateGHz,
 
 void Computer::printStats()
 {
-    cout << "====Computer Stats===="    << endl;
+    cout << endl << "====Computer Stats===="    << endl;
     cout << "Clock Rate (GHz):\t"	    << m_clockRateGHz << endl;
     cout << "CPI Arith:\t\t"		    << m_cpiArith << endl;
     cout << "CPI Store:\t\t"		    << m_cpiStore << endl;
     cout << "CPI Load:\t\t"		        << m_cpiLoad << endl;
     cout << "CPI Branch:\t\t"		    << m_cpiBranch << endl;
     cout << "-------------------------"	<< endl;
-    cout << "Global CPI:\t\t"		    << calculateGlobalCPI() << endl << endl;
+    cout << "Global CPI:\t\t"		    << calculateGlobalCPI() << endl;
+    cout << "Global MIPS:\t\t"		    << calculateGlobalMIPS() << endl;
+    cout  << endl;
 }
 
 double Computer::calculateGlobalCPI(){
@@ -35,16 +37,29 @@ double Computer::calculateGlobalCPI(){
     return globalCPI;
 }
 
-double Computer::calculateExecutionTime(Program program){
+double Computer::calculateWeightedCPI(Program &program){
+  double weightedCPI = ((program.getNumArith() * m_cpiArith) / program.getTotal()) +
+                         ((program.getNumStore() * m_cpiStore) / program.getTotal())+
+                         ((program.getNumBranch() * m_cpiBranch) / program.getTotal()) +
+                         ((program.getNumLoad() * m_cpiLoad) / program.getTotal());
+  return weightedCPI;
+}
+
+double Computer::calculateMIPS(Program &program){
+    double MIPS = (m_clockRateGHz * 10e9) / (calculateWeightedCPI(program) * 10e6);
+    cout << "\tMIPS: " << MIPS << endl;
+    return MIPS;
+}
+
+double Computer::calculateExecutionTime(Program &program){
     // T = (I * CPI)/ F;
-    double executionTime = (program.getTotal() * calculateGlobalCPI() )/((this->m_clockRateGHz) *  pow(10, 9));
-    cout << "Execution time (sec): " << executionTime << endl;
+    double executionTime = (program.getTotal() * calculateWeightedCPI(program) )/((m_clockRateGHz) *  10e9);
+    cout << "\tExecution time (sec): " << executionTime << endl;
     return executionTime;
 }
 
-double Computer::calculateMIPS(Program program){
-    // MIPS = I / (T * 10^6);
-    double MIPS = program.getTotal() / ((calculateExecutionTime(program) * pow(10, 6)));
-    cout << "MIPS: " << MIPS << endl;
-    return MIPS;
+double Computer::calculateGlobalMIPS(){
+    // F / (CPI * 10e6)
+    double globalMIPS = (m_clockRateGHz * 10e9) / (calculateGlobalCPI() * 10e6);
+    return globalMIPS;
 }

@@ -16,13 +16,13 @@ Program::Program(int numArith, int numStore, int numLoad, int numBranch)
 // Overloaded constructor for fractions
 Program::Program(int numTotal, double numArith, double numStore, double numLoad)
 {
-    m_numArith	= numArith * 100;
-    m_numStore	= numStore * 100;
-    m_numLoad	= numLoad  * 100;
+    m_numArith	= numArith * numTotal;
+    m_numStore	= numStore * numTotal;
+    m_numLoad	= numLoad * numTotal;
     m_numTotal	= numTotal;
 
     // Number of Branch instructions calculated from known variables
-    m_numBranch	= (1 - (numArith + numStore + numLoad)) * 100;
+    m_numBranch = numTotal - ((numArith + numStore + numLoad) * numTotal);
 }
 
 
@@ -35,3 +35,4 @@ void Program::printStats(){
     cout << "-------------------------"	<< endl;
     cout << "Total operations:\t"       << m_numTotal << endl << endl;
 }
+

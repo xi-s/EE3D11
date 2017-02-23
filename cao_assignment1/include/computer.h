@@ -17,8 +17,10 @@ class Computer{
 
         void printStats();
         double calculateGlobalCPI();
-        double calculateExecutionTime(Program);
-        double calculateMIPS(Program);
+        double calculateWeightedCPI(Program&);
+        double calculateGlobalMIPS();
+        double calculateExecutionTime(Program&);
+        double calculateMIPS(Program&);
 };
 
 

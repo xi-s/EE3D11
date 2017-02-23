@@ -16,10 +16,12 @@ class Program{
         void printStats();
         double calculateGlobalCPI();
 
-        int getArith(){ return m_numArith;};
-        int getStore(){ return m_numStore;};
-        int getLoad() { return m_numLoad;};
-        int getTotal(){ return m_numBranch;};
+        int getTotal(){ return m_numTotal; };
+
+        int getNumArith(){ return m_numArith; };
+        int getNumStore(){ return m_numStore; };
+        int getNumLoad(){ return m_numLoad; };
+        int getNumBranch(){ return m_numBranch; };
 };
 
 #endif
