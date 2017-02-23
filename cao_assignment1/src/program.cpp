@@ -25,7 +25,6 @@ Program::Program(int numTotal, double numArith, double numStore, double numLoad)
     m_numBranch = numTotal - ((numArith + numStore + numLoad) * numTotal);
 }
 
-
 void Program::printStats(){
     cout << "====Program Stats===="	    << endl;
     cout << "Arithmetic operations:\t"  << m_numArith << endl;

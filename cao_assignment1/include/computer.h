@@ -14,7 +14,6 @@ class Computer{
     public:
         // Constructor prototype
         Computer(double, double, double, double, double);
-
         void printStats();
         double calculateGlobalCPI();
         double calculateWeightedCPI(Program&);

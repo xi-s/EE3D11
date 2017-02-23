@@ -17,7 +17,6 @@ class Program{
         double calculateGlobalCPI();
 
         int getTotal(){ return m_numTotal; };
-
         int getNumArith(){ return m_numArith; };
         int getNumStore(){ return m_numStore; };
         int getNumLoad(){ return m_numLoad; };

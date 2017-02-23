@@ -52,9 +52,5 @@ int main(){
     computer3.calculateExecutionTime(programC);
     computer3.calculateMIPS(programC);
 
-    //computer3.calculateExecutionTime(program1);
-
-
-
     return 0;
 }

@@ -38,14 +38,25 @@ double Computer::calculateGlobalCPI(){
 }
 
 double Computer::calculateWeightedCPI(Program &program){
-  double weightedCPI = ((program.getNumArith() * m_cpiArith) / program.getTotal()) +
-                         ((program.getNumStore() * m_cpiStore) / program.getTotal())+
-                         ((program.getNumBranch() * m_cpiBranch) / program.getTotal()) +
-                         ((program.getNumLoad() * m_cpiLoad) / program.getTotal());
-  return weightedCPI;
+  /*
+    sum(Ic * CPIc) / I
+    Ic: Total instructions per class
+    CPI: CPI per class
+    I: Total instructions per program
+
+    Accumulating the calculations per instruction class,
+    divided by the total number of instructions
+    yields a weighted CPI.
+  */
+  double weightedCPI =  (program.getNumArith() * m_cpiArith)    +
+                        (program.getNumStore() * m_cpiStore)    +
+                        (program.getNumBranch() * m_cpiBranch)  +
+                        (program.getNumLoad() * m_cpiLoad);
+  return weightedCPI / program.getTotal();
 }
 
 double Computer::calculateMIPS(Program &program){
+    // F / (CPI * 10e6)
     double MIPS = (m_clockRateGHz * 10e9) / (calculateWeightedCPI(program) * 10e6);
     cout << "\tMIPS: " << MIPS << endl;
     return MIPS;

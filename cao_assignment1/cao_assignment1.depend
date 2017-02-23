@@ -23,17 +23,17 @@
 	"computer.h"
 	"program.h"
 
-1487864676 c:\users\laptop\desktop\git\ee3d11\cao_assignment1\include\computer.h
+1487869344 c:\users\laptop\desktop\git\ee3d11\cao_assignment1\include\computer.h
 	"program.h"
 
-1487863742 c:\users\laptop\desktop\git\ee3d11\cao_assignment1\include\program.h
+1487869347 c:\users\laptop\desktop\git\ee3d11\cao_assignment1\include\program.h
 
-1487868318 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment1\src\computer.cpp
+1487869272 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment1\src\computer.cpp
 	<iostream>
 	<math.h>
 	"computer.h"
 
-1487868610 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment1\src\program.cpp
+1487868818 source:c:\users\laptop\desktop\git\ee3d11\cao_assignment1\src\program.cpp
 	<iostream>
 	"program.h"
 
