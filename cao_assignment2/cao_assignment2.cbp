@@ -37,15 +37,21 @@
 		</Compiler>
 		<Unit filename="addinstruction.cpp" />
 		<Unit filename="addinstruction.h" />
+		<Unit filename="brneinstruction.cpp" />
+		<Unit filename="brneinstruction.h" />
 		<Unit filename="instruction.cpp" />
 		<Unit filename="instruction.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="oriinstruction.cpp" />
+		<Unit filename="oriinstruction.h" />
 		<Unit filename="program.cpp" />
 		<Unit filename="program.h" />
 		<Unit filename="registers.cpp" />
 		<Unit filename="registers.h" />
 		<Unit filename="simulator.cpp" />
 		<Unit filename="simulator.h" />
+		<Unit filename="subinstruction.cpp" />
+		<Unit filename="subinstruction.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
