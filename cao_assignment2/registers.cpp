@@ -5,38 +5,38 @@ using namespace std;
 
 Registers::Registers ()
 {
-    registers[0] = 0;
+    m_registers[0] = 0;
     // Initialize program counter to zero
-    PC = 0;
+    m_PC = 0;
 
 }
 
 void Registers::setRegister(int regNum, int value){
     if(regNum != 0){
-          registers[regNum] = value;
+          m_registers[regNum] = value;
     }else{
         cout << "Error, $zero is fixed" << endl;
     }
 }
 
 int Registers::getRegister(int regNum){
-    cout << "Return register value of " << registers[regNum];
-    return registers[regNum];
+    cout << "Return register value of " << m_registers[regNum];
+    return m_registers[regNum];
 }
 
 void Registers::setPC(int value){
-    PC = value;
+    m_PC = value;
 }
 
 int Registers::getPC(){
-    return PC;
+    return m_PC;
 }
 
 void Registers::print(){
     cout << "Register contents: " << endl;
-    for(int i = 0; i < registers.size(); i++){
-        cout << i << ": " << registers[i] << endl;
+    for(int i = 0; i < m_registers.size(); i++){
+        cout << i << ": " << m_registers[i] << endl;
     }
-    cout << "PC: " << PC << endl;
+    cout << "PC: " << m_PC << endl;
 
 }

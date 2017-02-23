@@ -1,12 +1,14 @@
 #ifndef ORIINSTRUCTION_H
 #define ORIINSTRUCTION_H
 
-#include "instruction.h"
+#include <instruction.h>
+#include "registers.h"
 
-class OriInstruction : public Instructor
+class OriInstruction : public Instruction
 {
     public:
-        OriInstruction();
+        OriInstruction(int, int, int);
+        virtual int execute(Registers*);
         virtual ~OriInstruction();
 
     protected:
@@ -14,4 +16,4 @@ class OriInstruction : public Instructor
     private:
 };
 
-#endif // ORIINSTRUCTION_H
+#endif // ADDINSTRUCTION_H

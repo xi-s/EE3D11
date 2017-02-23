@@ -9,18 +9,25 @@ using namespace std;
 class Instruction
 {
 private:
-
-
-    // Instruction parameters
-    int rs; // source 1
-    int rt; // source 2
-    int rd; // destination
-
-
+    string m_operation;
+    int m_rd;
+    int m_rs;
+    int m_rt;
 public:
-    Instruction(int rd, int rs, int rt);
-    virtual void dissassemble();
-    virtual int execute(Registers *);
+    Instruction();
+    virtual void disassemble();
+    virtual int execute(Registers*);
+
+    void setOperation(string operation);
+    void setRD(int value);
+    void setRS(int value);
+    void setRT(int value);
+
+    string getOperation();
+    int getRD();
+    int getRS();
+    int getRT();
+
 };
 
 #endif /* _INSTRUCTION_H_ */

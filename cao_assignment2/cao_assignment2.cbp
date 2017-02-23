@@ -37,9 +37,7 @@
 		</Compiler>
 		<Unit filename="addinstruction.cpp" />
 		<Unit filename="addinstruction.h" />
-		<Unit filename="instruction.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="instruction.cpp" />
 		<Unit filename="instruction.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="program.cpp" />

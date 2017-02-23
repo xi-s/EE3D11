@@ -7,8 +7,8 @@ class Registers
 {
 private:
 
-   std::array<int, 32> registers{};
-    int PC;
+   std::array<int, 32> m_registers{};
+    int m_PC;
    /* // Specify MIPS registers:
     int $zero;
 

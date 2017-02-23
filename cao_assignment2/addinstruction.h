@@ -2,13 +2,13 @@
 #define ADDINSTRUCTION_H
 
 #include <instruction.h>
-
+#include "registers.h"
 
 class AddInstruction : public Instruction
 {
     public:
-        AddInstruction();
-        AddInstruction(int rd, int rs, int rt);
+        AddInstruction(int, int, int);
+        virtual int execute(Registers*);
         virtual ~AddInstruction();
 
     protected:

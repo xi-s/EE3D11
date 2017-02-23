@@ -56,8 +56,6 @@ void Simulator::ui ()
 				break;
 			case 'r':
 				registers->print ();
-				registers->setRegister(15, 33131);
-					registers->print ();
 				break;
 			case 'e':
 				program->execute (registers);

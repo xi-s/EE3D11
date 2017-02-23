@@ -32,7 +32,7 @@ void Program::disassemble ()
 
 	for (it = instructions->begin (); it < instructions->end (); it++)
 	{
-	//	(*it)->disassemble ();
+		(*it)->disassemble ();
 	}
 }
 
@@ -43,7 +43,7 @@ void Program::singleStep (Registers *registers)
 
 	if (it >= instructions->begin () && it < instructions->end ())
 	{
-		//registers->setPC ((*it)->execute (registers));
+		registers->setPC ((*it)->execute (registers));
 	}
 }
 

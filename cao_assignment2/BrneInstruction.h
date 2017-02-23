@@ -1,13 +1,14 @@
-#ifndef BRNEINSTRUCTION_H
-#define BRNEINSTRUCTION_H
+#ifndef ADDINSTRUCTION_H
+#define ADDINSTRUCTION_H
 
 #include <instruction.h>
-
+#include "registers.h"
 
 class BrneInstruction : public Instruction
 {
     public:
-        BrneInstruction();
+        BrneInstruction(int, int, int);
+        virtual int execute(Registers*);
         virtual ~BrneInstruction();
 
     protected:
@@ -15,4 +16,4 @@ class BrneInstruction : public Instruction
     private:
 };
 
-#endif // BRNEINSTRUCTION_H
+#endif // ADDINSTRUCTION_H
