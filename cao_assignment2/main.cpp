@@ -5,6 +5,7 @@
 #include "addinstruction.h"
 #include "subinstruction.h"
 #include "oriinstruction.h"
+#include "brneinstruction.h"
 
 void loadProgram (Program *program)
 {
@@ -13,7 +14,7 @@ void loadProgram (Program *program)
 	program->appendInstruction (new OriInstruction (3, 0, 1));
 	program->appendInstruction (new AddInstruction (4, 4, 1));
 	program->appendInstruction (new SubInstruction (2, 2, 3));
-	//program->appendInstruction (new BrneInstruction (2, 0, -3));*/
+	program->appendInstruction (new BrneInstruction (2, 0, -3));
 }
 
 

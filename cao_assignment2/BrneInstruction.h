@@ -1,5 +1,5 @@
-#ifndef ADDINSTRUCTION_H
-#define ADDINSTRUCTION_H
+#ifndef BRNEINSTRUCTION_H
+#define BRNEINSTRUCTION_H
 
 #include <instruction.h>
 #include "registers.h"

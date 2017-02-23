@@ -15,9 +15,7 @@ SubInstruction::~SubInstruction()
 
 int SubInstruction::execute(Registers* Registers){
     cout << "Sub instruction executed" << endl;
-    Registers->setRegister(8, getRD());
-    Registers->setRegister(9, getRT());
-    Registers->setRegister(10, getRS());
-    Registers->setRegister(getRD(), getRT() - getRS());
+    // subtract rt from rs and store result in rd
+    Registers->setRegister(getRD(), Registers->getRegister(getRS()) - Registers->getRegister(getRT()));
     return Registers->getPC() + 1;
 }

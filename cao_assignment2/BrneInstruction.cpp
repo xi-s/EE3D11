@@ -15,9 +15,9 @@ BrneInstruction::~BrneInstruction()
 
 int BrneInstruction::execute(Registers* Registers){
     cout << "Brne instruction executed" << endl;
-    Registers->setRegister(8, getRD());
-    Registers->setRegister(9, getRT());
-    Registers->setRegister(10, getRS());
-    Registers->setRegister(getRD(), getRT() + getRS());
-    return Registers->getPC() + 1;
+    if(getRD() != getRS()){
+        return Registers->getPC() + 1 + getRT();
+    }else{
+         return Registers->getPC() + 1;
+    }
 }

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "registers.h"
 
 using namespace std;
@@ -20,7 +21,6 @@ void Registers::setRegister(int regNum, int value){
 }
 
 int Registers::getRegister(int regNum){
-    cout << "Return register value of " << m_registers[regNum];
     return m_registers[regNum];
 }
 
@@ -35,8 +35,8 @@ int Registers::getPC(){
 void Registers::print(){
     cout << "Register contents: " << endl;
     for(int i = 0; i < m_registers.size(); i++){
-        cout << i << ": " << m_registers[i] << endl;
+        cout << "$" << i << ":\t" << m_registers[i] << endl;
     }
-    cout << "PC: " << m_PC << endl;
+    cout << "PC:\t" << m_PC << endl;
 
 }
