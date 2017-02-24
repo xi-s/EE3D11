@@ -7,9 +7,10 @@
 class BrneInstruction : public Instruction
 {
     public:
-        BrneInstruction(int, int, int);
+        using Instruction::Instruction;
         virtual ~BrneInstruction();
 
+        void disassemble();
         int execute(Registers*);
 };
 

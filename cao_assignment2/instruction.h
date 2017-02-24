@@ -14,7 +14,10 @@ class Instruction
         int m_rs;
         int m_rt;
     public:
-        void disassemble();
+        Instruction(int, int ,int);
+        virtual ~Instruction();
+
+        virtual void disassemble() = 0;
         virtual int execute(Registers*) = 0;
 
         void setOperation(string operation);

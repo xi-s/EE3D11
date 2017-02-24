@@ -7,10 +7,11 @@
 class SubInstruction : public Instruction
 {
     public:
-        SubInstruction(int, int, int);
+        using Instruction::Instruction;
         virtual ~SubInstruction();
 
-        virtual int execute(Registers*);
+        void disassemble();
+        int execute(Registers*);
 };
 
 #endif // ADDINSTRUCTION_H
