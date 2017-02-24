@@ -4,6 +4,9 @@
 
 using namespace std;
 
+Program::Program(){
+}
+
 Program::Program(int numArith, int numStore, int numLoad, int numBranch)
 {
     m_numArith	= numArith;

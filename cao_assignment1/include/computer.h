@@ -12,9 +12,13 @@ class Computer{
         double m_cpiLoad;
         double m_cpiBranch;
     public:
+        Computer();
         // Constructor prototype
         Computer(double, double, double, double, double);
+
         void printStats();
+        void load(Program*);
+
         double calculateGlobalCPI();
         double calculateWeightedCPI(Program&);
         double calculateGlobalMIPS();
