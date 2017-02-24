@@ -8,6 +8,8 @@ class OriInstruction : public Instruction
 {
     public:
         OriInstruction(int, int, int);
+        virtual ~OriInstruction();
+
         int execute(Registers*);
 };
 

@@ -8,6 +8,8 @@ class SubInstruction : public Instruction
 {
     public:
         SubInstruction(int, int, int);
+        virtual ~SubInstruction();
+
         virtual int execute(Registers*);
 };
 

@@ -8,6 +8,8 @@ class AddInstruction : public Instruction
 {
     public:
         AddInstruction(int, int, int);
+        virtual ~AddInstruction();
+
         int execute(Registers*);
 };
 

@@ -8,6 +8,9 @@ OriInstruction::OriInstruction(int rd, int rs, int rt)
     setRT(rt);
 }
 
+OriInstruction::~OriInstruction(){
+}
+
 int OriInstruction::execute(Registers* Registers){
     disassemble();
     // Ori content of rs with immediate value of rt and store in rd

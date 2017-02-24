@@ -8,6 +8,9 @@ BrneInstruction::BrneInstruction(int rd, int rs, int rt)
     setRT(rt);
 }
 
+BrneInstruction::~BrneInstruction(){
+}
+
 int BrneInstruction::execute(Registers* Registers){
     disassemble();
     // If rd == rs, we increment by the immediate value,

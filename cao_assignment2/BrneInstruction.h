@@ -8,6 +8,8 @@ class BrneInstruction : public Instruction
 {
     public:
         BrneInstruction(int, int, int);
+        virtual ~BrneInstruction();
+
         int execute(Registers*);
 };
 
