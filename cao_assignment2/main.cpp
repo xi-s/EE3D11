@@ -16,10 +16,11 @@ void loadProgram (Program *program)
         $3 contains 1
         $4 contains 12 (initially)
 
-        while($2 != 0){
+        do{
             $4 += $1;
             $2 -= $3;
         }
+        while($2 != 0);
 
         $2 goes to zero after decrementing three times.
         Because the while condition is met before executing the next addition,
