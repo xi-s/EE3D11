@@ -35,11 +35,21 @@ which is stored in \$t1: \\
 \noindent \textbf{0000 0000 1111 1111 1111 1111 1110 0110}
 \section*{2b}
 The not instruction can be rewritten using a NOR (\$2.6 in the book), where one operand is the value which we want to invert, and the second operand is the \$zero register. The orn has to be done in two steps, first inverting the \$t3 and then or the result. The final mips code will then be:\\
+\begin{eqnarray}
 \noindent \textbf{nor \$t1, \$t2, \$zero} \\
 \noindent \textbf{nor \$t3, \$t3, \$zero} \\
-\noindent \textbf{or  \$t1, \$t2, \$t3} \\
+\noindent \textbf{or  \$t1, \$t2, \$t3} 
+\end{eqnarray}
 \section*{2c}
-
+All three instructions are in the R-format. We have the following decimal values in the fields,
+and below the word representation is shown: \\\\
+op | rs | rt | rd | shamt | funct \\ 
+1) \\ 0 | 10 | 0 | 9 | 0 | 39 \\
+000000 | 01010 | 00000 | 01001 | 00000 | 100111 \\ 
+2) \\ 0 | 11 | 0 | 11 | 0 | 39 \\
+000000 | 01011 | 00000 | 01011 | 00000 | 100111 \\ 
+3) \\ 0 | 10 | 11 | 9 | 0 | 37 \\
+000000 | 01010 | 01011 | 01001 | 00000 | 100101
 \section*{2d}
-The MIPS instruction set already contains the minimal set of logical primitives AND, OR and NOR. We can implement all sorts of logic using these primitives. There's no need to create an OR NOT function in MIPS, this would go against the principle of keeping the hardware to implement these instructions simple.
+The MIPS instruction set already contains the minimal set of logical primitives AND, OR, NOR, XOR. We can implement all sorts of logic using these primitives. There's no need to create an OR NOT function in MIPS, this would go against the principle of keeping the hardware to implement these instructions simple.
 \end{document}
