@@ -12,7 +12,22 @@
 \title{CAO HW2}
 \begin{document}
 	\maketitle
-	\section{}
+	\section*{1}
+	To translate the for loop to MIPS, we first store 0 in a variable, say \$s3:\\\\
+	\textbf{add \$s3, \$s3, \$zero}  \\
+	\textbf{FOR\_LOOP: slti \$t0, \$s3, 50} \\	
+	\textbf{beq \$t0, \$zero, EXIT}\\
+	\textbf{sll \$t1, \$s0, 2}\\
+	\textbf{add \$t2, \$s0, \$t1}\\
+	\textbf{lw \$t3, 0(\$t2)}\\
+	\textbf{sll \$t4, \$s1, 2}\\
+	\textbf{add \$t5, \$s1, \$t1}\\
+	\textbf{lw \$t6, -4(\$t5)}\\
+	\textbf{add \$t7, \$t3, \$t6}\\
+	\textbf{sw \$t3, 0(\$t5)}\\
+	\textbf{addi \$s3, \$s3, 1} \\
+	\textbf{j FOR\_LOOP} \\
+	\textbf{EXIT:}
 	\section*{2a}
 	For the first instruction \\\\ \textbf{not \$t1, \$t2} \\\\ First we convert \$t2, containing 0x00FF05A4 to bits: \\
 	
