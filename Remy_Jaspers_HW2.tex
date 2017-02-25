@@ -1,0 +1,45 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[default,osfigures,scale=0.95]{opensans} %% Alternatively
+%% use the option 'defaultsans' instead of 'default' to replace the
+%% sans serif font only.
+\usepackage[T1]{fontenc}
+\author{Remy Jaspers - 4499336}
+\title{CAO HW2}
+\begin{document}
+	\maketitle
+	\section{}
+	\section*{2a}
+	For the first instruction \\\\ \textbf{not \$t1, \$t2} \\\\ First we convert \$t2, containing 0x00FF05A4 to bits: \\
+	
+\noindent	\textbf{0000 0000 1111 1111 0000 0101 1010 0100} \\
+	
+\noindent And invert each bit to produce the following sequence,
+which is stored in \$t1: \\
+	
+\noindent	\textbf{1111 1111 0000 0000 1111 1010 0101 1011} \\\\
+
+\noindent For the second instruction: \\
+
+\noindent \textbf{orn \$t1, \$t2, \$t3} \\\\
+\noindent We convert \$t3 containing 0xFFFF003D, to bits and invert it:\\\\
+\noindent \textbf{!(1111 1111 1111 1111 0000 0000 0011 1101)} =   \\
+\noindent \textbf{0000 0000 0000 0000 1111 1111 1100 0010} \\\\
+\noindent Or \$t3 with \$t2 resulting in \$t1: \\\\
+\noindent \textbf{0000 0000 1111 1111 0000 0101 1010 0100} | \\
+\noindent \textbf{0000 0000 0000 0000 1111 1111 1100 0010} = \\
+\noindent \textbf{0000 0000 1111 1111 1111 1111 1110 0110}
+\section*{2b}
+The not instruction can be rewritten using a NOR (\$2.6 in the book), where one operand is the value which we want to invert, and the second operand is the \$zero register. The orn has to be done in two steps, first inverting the \$t3 and then or the result. The final mips code will then be:\\
+\noindent \textbf{nor \$t1, \$t2, \$zero} \\
+\noindent \textbf{nor \$t3, \$t3, \$zero} \\
+\noindent \textbf{or  \$t1, \$t2, \$t3} \\
+\section*{2c}
+
+\section*{2d}
+The MIPS instruction set already contains the minimal set of logical primitives AND, OR and NOR. We can implement all sorts of logic using these primitives. There's no need to create an OR NOT function in MIPS, this would go against the principle of keeping the hardware to implement these instructions simple.
+\end{document}
