@@ -4,6 +4,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{tabto}
 \usepackage[default,osfigures,scale=0.95]{opensans} %% Alternatively
 %% use the option 'defaultsans' instead of 'default' to replace the
 %% sans serif font only.
@@ -13,20 +14,21 @@
 \begin{document}
 	\maketitle
 	\section*{1}
-	To translate the for loop to MIPS, we first store 0 in a variable, say \$s3:\\\\
-	\textbf{add \$s3, \$s3, \$zero}  \\
-	\textbf{FOR\_LOOP: slti \$t0, \$s3, 50} \\	
-	\textbf{beq \$t0, \$zero, EXIT}\\
-	\textbf{sll \$t1, \$s0, 2}\\
-	\textbf{add \$t2, \$s0, \$t1}\\
-	\textbf{lw \$t3, 0(\$t2)}\\
-	\textbf{sll \$t4, \$s1, 2}\\
-	\textbf{add \$t5, \$s1, \$t1}\\
-	\textbf{lw \$t6, -4(\$t5)}\\
-	\textbf{add \$t7, \$t3, \$t6}\\
-	\textbf{sw \$t3, 0(\$t5)}\\
-	\textbf{addi \$s3, \$s3, 1} \\
-	\textbf{j FOR\_LOOP} \\
+	In the sort procedure (\$2.13, p. 135-137 in the book) is shown how a for loop has to be created. This MIPS code is largely based on that example. I've tried to reuse as many temporary registers as possible.\\\\
+	\textbf{add \$s3, \$s3, \$zero} \tab \# i = 0  \\
+	\textbf{FOR\_LOOP:} \tab \# Label for loop\\\\
+	\textbf{slti \$t0, \$s3, 50} \tab \# set \$t0 to 0 if i $\ge$ 50\\	
+	\textbf{beq \$t0, \$zero, EXIT} \tab \# exit loop if t0 == 0 \\\\
+	\textbf{sll \$t1, \$s3, 2} \tab \# i * 4 in \$t1\\
+	\textbf{add \$t1, \$s0, \$t1} \tab \# A + (i * 4) in \$t1\\
+	\textbf{lw \$t2, 0(\$t1)} \tab \# load A[i] into \$t2 \\\\
+	\textbf{sll \$t3, \$s3, 2} \tab \# i * 4 in \$t3\\
+	\textbf{add \$t3, \$s1, \$t3} \tab \# B + (i * 4) in \$t3 \\
+	\textbf{lw \$t4, -4(\$t3)} \tab \# Load B[i-1] into \$t4  \\\\
+	\textbf{add \$t1, \$t2, \$t4} \tab \# A[i] + B[i-1] into \$t1 \\
+	\textbf{sw \$t2, 0(\$t1)} \tab \# Store result in A[i] \\\\
+	\textbf{addi \$s3, \$s3, 1} \tab \# i++ \\
+	\textbf{j FOR\_LOOP} \tab \# Jump back to label\\
 	\textbf{EXIT:}
 	\section*{2a}
 	For the first instruction \\\\ \textbf{not \$t1, \$t2} \\\\ First we convert \$t2, containing 0x00FF05A4 to bits: \\
@@ -49,7 +51,7 @@ which is stored in \$t1: \\
 \noindent \textbf{0000 0000 0000 0000 1111 1111 1100 0010} = \\
 \noindent \textbf{0000 0000 1111 1111 1111 1111 1110 0110}
 \section*{2b}
-The not instruction can be rewritten using a NOR (\$2.6 in the book), where one operand is the value which we want to invert, and the second operand is the \$zero register. The orn has to be done in two steps, first inverting the \$t3 and then or the result. The final mips code will then be:\\
+The not instruction can be rewritten using a NOR (\$2.6, p. 89 in the book), where one operand is the value which we want to invert, and the second operand is the \$zero register. The orn has to be done in two steps, first inverting the \$t3 and then or the result. The final mips code will then be:\\
 \begin{eqnarray}
 \noindent \textbf{nor \$t1, \$t2, \$zero} \\
 \noindent \textbf{nor \$t3, \$t3, \$zero} \\
