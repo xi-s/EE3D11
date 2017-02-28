@@ -16,14 +16,17 @@ void loadProgram (Program *program)
         $3 contains 1
         $4 contains 12 (initially)
 
-        while($2 != 0){
+        do{
             $4 += $1;
             $2 -= $3;
         }
+        while($2 != 0);
 
         $2 goes to zero after decrementing three times.
         Because the while condition is met before executing the next addition,
         The value 12 will be added to $4 only twice.
+
+        This is akin to multiplication by repeated addition
 
     */
     program->appendInstruction (new OriInstruction (1, 0, 12));
@@ -32,6 +35,7 @@ void loadProgram (Program *program)
 	program->appendInstruction (new AddInstruction (4, 4, 1));
 	program->appendInstruction (new SubInstruction (2, 2, 3));
 	program->appendInstruction (new BrneInstruction (2, 0, -3));
+	program->appendInstruction (new AddInstruction(0, 0, 10));
 }
 
 int main (void)

@@ -5,6 +5,9 @@
 
 using namespace std;
 
+Computer::Computer(){
+}
+
 Computer::Computer( double clockRateGHz,
                     double cpiArith,
                     double cpiStore,
@@ -73,4 +76,12 @@ double Computer::calculateGlobalMIPS(){
     // F / (CPI * 10e6)
     double globalMIPS = (m_clockRateGHz * 10e9) / (calculateGlobalCPI() * 10e6);
     return globalMIPS;
+}
+
+void Computer::load(Program* programs){
+    for(int i = 0; i < 3; i++){
+        cout << "Program " << i << ": " << endl;
+        calculateExecutionTime(programs[i]);
+        calculateMIPS(programs[i]);
+    }
 }

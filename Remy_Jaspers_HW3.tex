@@ -1,0 +1,47 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[default,osfigures,scale=0.95]{opensans}
+\usepackage[T1]{fontenc}
+\author{Remy Jaspers - 4499336}
+\title{CAO HW3}
+\begin{document}
+	\maketitle
+	\section*{1}
+	The steps for multiplying -7 and 3 are found by closely following the algorithm as stated in \$3.3, p. 187. First 7 is negated using two's complement. One of both of the signs is negative, hence the result must be negative. After using two's complement again on the end result after 4 iterations, the value 1110 1011 (-21) is found.
+	\begin{table}[h]
+		\centering
+		\label{my-label}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Iteration & Description & MR  & MD & Product   \\ \hline
+			0& Initial values  & 0011  & 1111 1001 &  0000 0000 \\ 
+			& 1. Convert to positive using 2s complement & 0011 & 0000 0111 & 0000 0000 \\ \hline
+			1& 1. Prod = Prod + MD &  0011  & 0000 0111 & 0000 0111 \\
+			& 2. SLL MD &  0011  & 0000 1110 & 0000 0111 \\
+			& 3. SRL MR &  0001  & 0000 1110 & 0000 0111 \\ \hline
+			
+			2 
+			& 1. Prod = Prod + MD &  0001  & 0000 1110 & 0001 0101 \\
+			& 2. SLL MD &  0001  & 0001 1100 & 0001 0101 \\
+			& 3. SRL MR &  0000  & 0001 1100 & 0001 0101 \\ \hline
+			
+			3 
+			& 1. NOP &  0000  & 0001 1100 & 0001 0101 \\
+			& 2. SLL MD &  0000  & 0011 1000 & 0001 0101 \\
+			& 3. SRL MR &  0000  & 0011 1000 & 0001 0101 \\ \hline
+
+			4 
+			& 1. NOP &  0000  & 0001 1100 & 0001 0101 \\
+			& 2. SLL MD &  0000  & 0111 0000 & 0001 0101 \\
+			& 3. SRL MR &  0000  & 0111 0000 & 0001 0101 \\ \hline
+			
+
+			After
+			& Convert to negative using 2s complement &  0000  & 0111 0000 & 1110 1011 \\ \hline
+		\end{tabular}
+	\end{table}
+\end{document} 

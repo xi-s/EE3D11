@@ -1,11 +1,10 @@
 #include "subinstruction.h"
 
-SubInstruction::SubInstruction(int rd, int rs, int rt)
-{
-    setOperation("sub");
-    setRD(rd);
-    setRS(rs);
-    setRT(rt);
+SubInstruction::~SubInstruction(){
+}
+
+void SubInstruction::disassemble(){
+        cout << "sub" << " $" << getRD() << ", $" << getRS() <<", $" << getRT() << endl;
 }
 
 int SubInstruction::execute(Registers* Registers){

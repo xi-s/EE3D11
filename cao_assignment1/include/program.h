@@ -9,6 +9,7 @@ class Program{
         int m_numBranch;
         int m_numTotal;
     public:
+        Program();
         Program(int, int, int, int);
         // Overloaded constructor that accepts fractions
         Program(int, double, double, double);

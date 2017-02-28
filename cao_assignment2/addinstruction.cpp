@@ -1,11 +1,10 @@
 #include "addinstruction.h"
 
-AddInstruction::AddInstruction(int rd, int rs, int rt)
-{
-    setOperation("add");
-    setRD(rd);
-    setRS(rs);
-    setRT(rt);
+AddInstruction::~AddInstruction(){
+}
+
+void AddInstruction::disassemble(){
+        cout << "add" << " $" << getRD() << ", $" << getRS() <<", $" << getRT() << endl;
 }
 
 int AddInstruction::execute(Registers* Registers){

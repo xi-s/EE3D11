@@ -1,0 +1,72 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tabto}
+\usepackage[default,osfigures,scale=0.95]{opensans} %% Alternatively
+%% use the option 'defaultsans' instead of 'default' to replace the
+%% sans serif font only.
+\usepackage[T1]{fontenc}
+\author{Remy Jaspers - 4499336}
+\title{CAO HW2}
+\begin{document}
+	\maketitle
+	\section*{1}
+	In the sort procedure (\$2.13, p. 135-137 in the book) is shown how a for loop has to be created. This MIPS code is largely based on that example. I've tried to reuse as many temporary registers as possible.\\\\
+	\textbf{add \$s3, \$s3, \$zero} \tab \# i = 0  \\
+	\textbf{FOR\_LOOP:} \tab \# Label for loop\\\\
+	\textbf{slti \$t0, \$s3, 50} \tab \# set \$t0 to 0 if i $\ge$ 50\\	
+	\textbf{beq \$t0, \$zero, EXIT} \tab \# exit loop if t0 == 0 \\\\
+	\textbf{sll \$t1, \$s3, 2} \tab \# i * 4 in \$t1\\
+	\textbf{add \$t1, \$s0, \$t1} \tab \# A + (i * 4) in \$t1\\
+	\textbf{lw \$t2, 0(\$t1)} \tab \# load A[i] into \$t2 \\\\
+	\textbf{sll \$t3, \$s3, 2} \tab \# i * 4 in \$t3\\
+	\textbf{add \$t3, \$s1, \$t3} \tab \# B + (i * 4) in \$t3 \\
+	\textbf{lw \$t4, -4(\$t3)} \tab \# Load B[i-1] into \$t4  \\\\
+	\textbf{add \$t1, \$t2, \$t4} \tab \# A[i] + B[i-1] into \$t1 \\
+	\textbf{sw \$t2, 0(\$t1)} \tab \# Store result in A[i] \\\\
+	\textbf{addi \$s3, \$s3, 1} \tab \# i++ \\
+	\textbf{j FOR\_LOOP} \tab \# Jump back to label\\
+	\textbf{EXIT:}
+	\section*{2a}
+	For the first instruction \\\\ \textbf{not \$t1, \$t2} \\\\ First we convert \$t2, containing 0x00FF05A4 to bits: \\
+	
+\noindent	\textbf{0000 0000 1111 1111 0000 0101 1010 0100} \\
+	
+\noindent And invert each bit to produce the following sequence,
+which is stored in \$t1: \\
+	
+\noindent	\textbf{1111 1111 0000 0000 1111 1010 0101 1011} \\\\
+
+\noindent For the second instruction: \\
+
+\noindent \textbf{orn \$t1, \$t2, \$t3} \\\\
+\noindent We convert \$t3 containing 0xFFFF003D, to bits and invert it:\\\\
+\noindent \textbf{!(1111 1111 1111 1111 0000 0000 0011 1101)} =   \\
+\noindent \textbf{0000 0000 0000 0000 1111 1111 1100 0010} \\\\
+\noindent Or \$t3 with \$t2 resulting in \$t1: \\\\
+\noindent \textbf{0000 0000 1111 1111 0000 0101 1010 0100} | \\
+\noindent \textbf{0000 0000 0000 0000 1111 1111 1100 0010} = \\
+\noindent \textbf{0000 0000 1111 1111 1111 1111 1110 0110}
+\section*{2b}
+The not instruction can be rewritten using a NOR (\$2.6, p. 89 in the book), where one operand is the value which we want to invert, and the second operand is the \$zero register. The orn has to be done in two steps, first inverting the \$t3 and then or the result. The final mips code will then be:\\
+\begin{eqnarray}
+\noindent \textbf{nor \$t1, \$t2, \$zero} \\
+\noindent \textbf{nor \$t3, \$t3, \$zero} \\
+\noindent \textbf{or  \$t1, \$t2, \$t3} 
+\end{eqnarray}
+\section*{2c}
+All three instructions are in the R-format. We have the following decimal values in the fields,
+and below the word representation is shown: \\\\
+op | rs | rt | rd | shamt | funct \\ 
+1) \\ 0 | 10 | 0 | 9 | 0 | 39 \\
+000000 | 01010 | 00000 | 01001 | 00000 | 100111 \\ 
+2) \\ 0 | 11 | 0 | 11 | 0 | 39 \\
+000000 | 01011 | 00000 | 01011 | 00000 | 100111 \\ 
+3) \\ 0 | 10 | 11 | 9 | 0 | 37 \\
+000000 | 01010 | 01011 | 01001 | 00000 | 100101
+\section*{2d}
+The MIPS instruction set already contains the minimal set of logical primitives AND, OR, NOR, XOR. We can implement all sorts of logic using these primitives. There's no need to create an OR NOT function in MIPS, this would go against the principle of keeping the hardware to implement these instructions simple.
+\end{document}

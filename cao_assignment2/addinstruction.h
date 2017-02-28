@@ -7,7 +7,10 @@
 class AddInstruction : public Instruction
 {
     public:
-        AddInstruction(int, int, int);
+        using Instruction::Instruction;
+        virtual ~AddInstruction();
+
+        void disassemble();
         int execute(Registers*);
 };
 

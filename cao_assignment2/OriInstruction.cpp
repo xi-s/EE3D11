@@ -1,11 +1,10 @@
 #include "oriinstruction.h"
 
-OriInstruction::OriInstruction(int rd, int rs, int rt)
-{
-    setOperation("ori");
-    setRD(rd);
-    setRS(rs);
-    setRT(rt);
+OriInstruction::~OriInstruction(){
+}
+
+void OriInstruction::disassemble(){
+        cout << "ori" << " $" << getRD() << ", $" << getRS() <<", " << getRT() << endl;
 }
 
 int OriInstruction::execute(Registers* Registers){
