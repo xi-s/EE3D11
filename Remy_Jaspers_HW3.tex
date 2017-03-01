@@ -65,6 +65,12 @@
 	49 | 3 | 3 | 0 \\
 	lwc1 \$v1, 0(\$v1) \\\\
 	Which loads a single precision floating point number into the \$v1 result register, with offset 0.  
-	
+	\section*{2d}
+	Again, we partition the bits into the format as specified in the IEEE 754 standard: \\
+	\textbf{1 | 10001000 | 11000110000000000000000} \\
+	Sign bit is 1 \\
+	Exponent is 136 - 127 = 9\\
+	Fraction is $6488064_{10}$ \\\\
+	Using the formula and expanding the fraction: \\ $(-1)^s \cdot (1 + \text{Fraction}) \cdot 2^E = \\ (-1)^1 \cdot (1 + (2^{-1}) + (2^{-2}) + (2^{-6}) + (2^{-7}) \cdot 2^{9} = \\ -908.0$
 	
 \end{document} 
