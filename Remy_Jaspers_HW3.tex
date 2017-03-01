@@ -55,7 +55,7 @@
 	\section*{2b}
 	\section*{2c}
 	C463000 represents \textbf{1100 0100 0110 0011 0000 0000 0000 0000} in binary. Looking at the first 6 bits, we find the opcode to be \textbf{110001} or 49 in decimal. This corresponds to the \textbf{lwc1} or Load Floating Point Single. We extract all bits in I-format: \\\\
-	110001 | 00011  00011 | 00000 | 00000 | 000000 \\
+	110001 | 00011 | 00011 | 0000000000000000 \\
 	49 | 3 | 3 | 0 \\
 	lwc1 \$v1, 0(\$v1) \\\\
 	Which loads a single precision floating point number into the \$v1 result register, with offset 0.  
