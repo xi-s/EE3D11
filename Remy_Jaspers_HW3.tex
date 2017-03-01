@@ -51,6 +51,14 @@
 	The multiplier is 8 bits, hence we need as many iterations as there are bits in the multiplier, which is 8. We need an addition and two shifts in each iteration, and the shifts of the multiplicand and multiplier are done simultaneously. We need (8 * 2) * 3u  = 48u time units to perform this calculation.
 	\section*{1d}
 	By using a parallel tree of ALU's we can reduce the number of iterations from 8 to $log_{2}(8) = 3$. The time needed is then (3 *  3u) for the adders, and additionally (3 * 3u) for the shifts = 27u . However, we need $\sum_{n=1}^{b} n$ adders, where b is the number of bits in the multiplier. In the case of 8 bits, we need 36 adders.
+	\section*{2a}
+	\section*{2b}
+	\section*{2c}
+	C463000 represents \textbf{1100 0100 0110 0011 0000 0000 0000 0000} in binary. Looking at the first 6 bits, we find the opcode to be \textbf{110001} or 49 in decimal. This corresponds to the \textbf{lwc1} or Load Floating Point Single. We extract all bits in I-format: \\\\
+	110001 | 00011  00011 | 00000 | 00000 | 000000 \\
+	49 | 3 | 3 | 0 \\
+	lwc1 \$v1, 0(\$v1) \\\\
+	Which loads a single precision floating point number into the \$v1 result register, with offset 0.  
 	
 	
 \end{document} 
