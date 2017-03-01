@@ -52,9 +52,15 @@
 	\section*{1d}
 	By using a parallel tree of ALU's we can reduce the number of iterations from 8 to $log_{2}(8) = 3$. The time needed is then (3 *  3u) for the adders, and additionally (3 * 3u) for the shifts = 27u . However, we need $\sum_{n=1}^{b} n$ adders, where b is the number of bits in the multiplier. In the case of 8 bits, we need 36 adders.
 	\section*{2a}
+	C463000 represents \textbf{1100 0100 0110 0011 0000 0000 0000 0000} in binary. This is from left to right: $(2^{31} + 2^{30} + 2^{26} + 2^{22} + 2^{21} + 2^{17} + 2^{16}) = 3294822400_{10}$
 	\section*{2b}
+	First the 2s complement is found by inverting all bits and adding 1 to the result.
+	\textbf{1100 0100 0110 0011 0000 0000 0000 0000} \\
+	\textbf{0011 1011 1001 1100 1111 1111 1111 1111} \\
+	\textbf{0011 1011 1001 1101 0000 0000 0000 0000} \\
+	Then we calculate the value to be $-1000144896_{10}$, by remembering that this is a negative value, because the sign bit in the uncomplemented value is 1.
 	\section*{2c}
-	C463000 represents \textbf{1100 0100 0110 0011 0000 0000 0000 0000} in binary. Looking at the first 6 bits, we find the opcode to be \textbf{110001} or 49 in decimal. This corresponds to the \textbf{lwc1} or Load Floating Point Single. We extract all bits in I-format: \\\\
+ Looking at the first 6 bits, we find the opcode to be \textbf{110001} or 49 in decimal. This corresponds to the \textbf{lwc1} or Load Floating Point Single. We extract all bits in I-format: \\\\
 	110001 | 00011 | 00011 | 0000000000000000 \\
 	49 | 3 | 3 | 0 \\
 	lwc1 \$v1, 0(\$v1) \\\\
