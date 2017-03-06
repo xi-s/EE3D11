@@ -41,8 +41,9 @@ insert:
 		lw   $t3, 4($t2)		# load a[j + 1] in $t3
 		sw   $t3, 0($t2)		# store a[j] in t3 = in a[j + 1]
 		
-		sll  $
-		 		
+		sll  $t1, $a3, 2		# i * 4
+		add  $t2, $a0, $t1		# $t2 = a + (i * 4) = a[i]
+		sw   $t3, 0($a2)		# a[i] = elem
 		
 		move	$s1, $zero		# i=0
 for_get:	bge	$s1, $s2, exit_get	# if i>=n go to exit_for_get

@@ -50,7 +50,7 @@
 	\section*{1c}
 	The multiplier is 8 bits, hence we need as many iterations as there are bits in the multiplier, which is 8. We need an addition and two shifts in each iteration, and the shifts of the multiplicand and multiplier are done simultaneously. We need (8 * 2) * 3u  = 48u time units to perform this calculation.
 	\section*{1d}
-	By using a parallel tree of ALU's we can reduce the number of iterations from 8 to $log_{2}(8) = 3$. The time needed is then (3 *  3u) for the adders, and additionally (3 * 3u) for the shifts = 27u . However, we need $\sum_{n=1}^{b} n$ adders, where b is the number of bits in the multiplier. In the case of 8 bits, we need 36 adders.
+	By using a parallel tree of ALU's we can reduce the number of iterations from 8 to $log_{2}(8) = 3$. The time needed is then (3 *  3u) for all layers of the tree and the shifts are then omitted. Thus we need a total of 9u time units when using a parallel tree. The price you pay is literally the extra cost of all the extra ALU's, and perhaps the extra energy needed for the calculation.
 	\section*{2a}
 	C463000 represents \textbf{1100 0100 0110 0011 0000 0000 0000 0000} in binary. This is from left to right: $(2^{31} + 2^{30} + 2^{26} + 2^{22} + 2^{21} + 2^{17} + 2^{16}) = 3294822400_{10}$
 	\section*{2b}
