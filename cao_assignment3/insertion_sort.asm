@@ -34,6 +34,8 @@ insert:
 		addi $a1, $a1, -1		# length - 1
 		move $s0, $a1			# j = length -1
 		addi $s0, $s0, -1		# j--
+
+	for_insert:
 		ble  $s0, $a2, exit		# j < i, then exit
 		
 		sll  $t1, $s0, 2		# $t1 = j * 4
@@ -44,6 +46,28 @@ insert:
 		sll  $t1, $a3, 2		# i * 4
 		add  $t2, $a0, $t1		# $t2 = a + (i * 4) = a[i]
 		sw   $t3, 0($a2)		# a[i] = elem
+		j for_insert
+binarySearch:
+		addi $t0, $t0, -1		# $t0 = low = -1
+		move $t1, $a1			# $t1 = high = length
+		
+		addi $t2, $t1, -1		# $t2 = high - 1
+	while_binsearch:
+		bge $t0, $t2, exit		# if low >= high - 1, exit
+		
+		add $t3, $t0, $t1		# $t3 = (low + high)
+		srl $t4, $t3, 2			# $t4 = (low + high) / 2 = mid
+		
+		sll $t4, $t4, 2			# mid * 4
+		add $t5, $a0, $t4		# $t5 + (mid * 4) = a[mid]
+		j if
+	if:	
+		blt $t5, $a2, else		# a[mid] < elem, go to else
+		move $t1, $t4			# high = mid
+	else:   bge $t5, $a2, if		# a[mid] >= elem, go to if
+		move $t0, $t4			# low = mid			
+		
+		move $v0, $t1			# put high in $v0
 		
 		move	$s1, $zero		# i=0
 for_get:	bge	$s1, $s2, exit_get	# if i>=n go to exit_for_get
