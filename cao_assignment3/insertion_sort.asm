@@ -4,62 +4,82 @@
 # Date:		March 1, 2017
 # Description:	Insertion sort
 	.text
-	j	main			# Jump to main-routine
+		j	main			# Jump to main-routine
 
+		.data
+str1:		.asciiz "Insert the array size \n"
+str2:		.asciiz "Insert the array elements,one per line  \n"
+str3:		.asciiz "The sorted array is : \n"
+str5:		.asciiz "\n"
 
-	.data
-insert_str:	.asciiz	"Insert the array size "
-elements_str:	.asciiz	"Insert the array elements, one per line"
-result_str:	.asciiz	"The sorted array is: "
-test_str: 	.asciiz "TEST\n"
-newline:	.asciiz	"\n"
+		.text
+		.globl	main
+main: 
+		la	$a0, str1		# Print of str1
+		li	$v0, 4			#
+		syscall				#
 
-	.text
-	.globl	main
-main:	
-	addi	$sp, $sp, -4		# create a stack frame	
-	sw	$ra, 0($sp)		# save the return address
+		li	$v0, 5			# Get the array size(n) and
+		syscall				# and put it in $v0
+		move	$s2, $v0		# $s2=n
+		sll	$s0, $v0, 2		# $s0=n*4
+		sub	$sp, $sp, $s0		# This instruction creates a stack
+						# frame large enough to contain
+						# the array
+		la	$a0, str2		#
+		li	$v0, 4			# Print of str2
+		syscall				#
+            
+insert:
+		addi $a1, $a1, -1		# length - 1
+		move $s0, $a1			# j = length -1
+		addi $s0, $s0, -1		# j--
+		ble  $s0, $a2, exit		# j < i, then exit
+		
+		sll  $t1, $s0, 2		# $t1 = j * 4
+		add  $t2, $a0, $t1		# $t2 = a + (j * 4) = a[j]
+		lw   $t3, 4($t2)		# load a[j + 1] in $t3
+		sw   $t3, 0($t2)		# store a[j] in t3 = in a[j + 1]
+		
+		sll  $
+		 		
+		
+		move	$s1, $zero		# i=0
+for_get:	bge	$s1, $s2, exit_get	# if i>=n go to exit_for_get
+		sll	$t0, $s1, 2		# $t0=i*4
+		add	$t1, $t0, $sp		# $t1=$sp+i*4
+		li	$v0, 5			# Get one element of the array
+		syscall				#
+		sw	$v0, 0($t1)		# The element is stored
+						# at the address $t1
+		la	$a0, str5
+		li	$v0, 4
+		syscall
+		addi	$s1, $s1, 1		# i=i+1
+		j	for_get
+exit_get:	move	$a0, $sp		# $a0=base address af the array
+		move	$a1, $s2		# $a1=size of the array
+		jal	for_print			# isort(a,n)
+						# In this moment the array has been 
+						# sorted and is in the stack frame 
+		la	$a0, str3		# Print of str3
+		li	$v0, 4
+		syscall
 
-	la	$a0, insert_str		# printf("Insert the array size ")
-	li	$v0, 	4		#
-	syscall				#
-	
-	li		$v0, 5		# scanf("%d", &n)
-	syscall				#
-	move		$s0, $v0	# $s0=n
-	
-	la	$a0, ($s0)		# print getal voor debug
-	li	$v0, 1			#
-	syscall				#
-	
-	la	$a0, elements_str	# printf("Insert the array elements, one per line")
-	li	$v0, 	4		#
-	syscall				#
-	
-	# FOR #
-	move $s1, $zero			
-	addi $s2, $zero, 5
-for_print:
-	bge $s1, $s0, exit_print	# i >= number of array elems.
-	sll $t0, $s1, 2			
-	add $t1, $sp, $t0
-	
-	la	$a0, test_str		# printf("Test")
-	li	$v0, 	4		#
-	syscall				#
-	
-	addi $s1, $s1, 1
-	j for_print
-exit_print:
-	add $sp, $sp, $s0
-	li $v0, 10
-	syscall
-	# END FOR#
-	lw		$ra, 0($sp)	# restore return address	
-	addi		$sp, $sp, 4	# eliminate stack frame
-	li		$v0, 10		# exit
-	syscall
+		move	$s1, $zero		# i=0
+for_print:	bge	$s1, $s2, exit_print	# if i>=n go to exit_print
+		sll	$t0, $s1, 2		# $t0=i*4
+		add	$t1, $sp, $t0		# $t1=address of a[i]
+		lw	$a0, 0($t1)		#
+		li	$v0, 1			# print of the element a[i]
+		syscall				#
 
-#
-# end main
-#	
+		la	$a0, str5
+		li	$v0, 4
+		syscall
+		addi	$s1, $s1, 1		# i=i+1
+		j	for_print
+exit_print:	add	$sp, $sp, $s0		# elimination of the stack frame 
+              
+		li	$v0, 10			# EXIT
+		syscall				#
