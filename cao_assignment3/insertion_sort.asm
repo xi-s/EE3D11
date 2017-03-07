@@ -1,9 +1,4 @@
-#
-# Filename:	insertion_sort.asm
-# Author: 	Remy Jaspres
-# Date:		March 1, 2017
-# Description:	Insertion sort
-	.text
+.text
 		j	main			# Jump to main-routine
 
 		.data
@@ -30,68 +25,6 @@ main:
 		li	$v0, 4			# Print of str2
 		syscall				#
             
-insert:
-		addi $a1, $a1, -1		# length - 1
-		move $s0, $a1			# j = length -1
-		addi $s0, $s0, -1		# j--
-
-	for_insert:
-		ble  $s0, $a2, exit_for_insert	# j < i, then exit
-		
-		sll  $t1, $s0, 2		# $t1 = j * 4
-		add  $t2, $a0, $t1		# $t2 = a + (j * 4) = a[j]
-		lw   $t3, 4($t2)		# load a[j + 1] in $t3
-		sw   $t3, 0($t2)		# store a[j] in t3 = in a[j + 1]
-	exit_for_insert:
-		sll  $t1, $a3, 2		# i * 4
-		add  $t2, $a0, $t1		# $t2 = a + (i * 4) 
-		lw   $t3, 0($t2)		# $t3 = a[i]
-		sw   $t3, 0($a2)		# a[i] = elem
-		j for_insert
-binarySearch:
-		addi $t0, $t0, -1		# $t0 = low = -1
-		move $t1, $a1			# $t1 = high = length
-		
-		addi $t2, $t1, -1		# $t2 = high - 1
-	while_binsearch:
-		bge $t0, $t2, exit		# if low >= high - 1, exit
-		
-		add $t3, $t0, $t1		# $t3 = (low + high)
-		srl $t4, $t3, 2			# $t4 = (low + high) / 2 = mid
-		
-		sll $t4, $t4, 2			# mid * 4
-		add $t5, $a0, $t4		# $t5 + (mid * 4) = a[mid]
-		lw  $t6, 0($t5)			# $t6 = a[mid]
-		j if
-	exit_while_binsearch:
-	if:	
-		blt $t6, $a2, else		# a[mid] < elem, go to else
-		move $t1, $t4			# high = mid
-	else:   bge $t6, $a2, if		# a[mid] >= elem, go to if
-		move $t0, $t4			# low = mid			
-		
-		move $v0, $t1			# put high in $v0
-
-		move $s1, $zero			# i = 0
-insertion_sort:
-		bge $s1, $a1, exit		# i >= length, exit
-		
-		jal binarySearch
-		jal insert
-		
-		bge $s1, $a1, exit		# i >= length, exit
-		sll $t0, $s1, 2			# i * 4
-	        add $tX, $t0, $zero		# b + (i * 4)
-		lw $t2, 0($tX			# $t2 = b[i]
-		
-		add $t1, $a0, $t0		# a + (i * 4)
-		lw  $t3, 0($t1)			# $t3 = a[i]
-		
-		sw $t3, 0(t2)			# a[i] = b[i]
-		lw $t1, 
-		
-		
-		
 		move	$s1, $zero		# i=0
 for_get:	bge	$s1, $s2, exit_get	# if i>=n go to exit_for_get
 		sll	$t0, $s1, 2		# $t0=i*4
@@ -107,7 +40,7 @@ for_get:	bge	$s1, $s2, exit_get	# if i>=n go to exit_for_get
 		j	for_get
 exit_get:	move	$a0, $sp		# $a0=base address af the array
 		move	$a1, $s2		# $a1=size of the array
-		jal	for_print			# isort(a,n)
+		jal	insertion_sort		# isort(a,n)
 						# In this moment the array has been 
 						# sorted and is in the stack frame 
 		la	$a0, str3		# Print of str3
@@ -131,3 +64,98 @@ exit_print:	add	$sp, $sp, $s0		# elimination of the stack frame
               
 		li	$v0, 10			# EXIT
 		syscall				#
+
+########### INSERT #############
+insert:
+		addi $t0, $a1, -1		# $t0 = length - 1
+	for_insert:
+		blt  $t0, $a3, exit_insert	# j < i, then exit
+		
+		sll  $t1, $t0, 2		# $t1 = j * 4
+		add  $t1, $t1, $a0		# $t2 = a + (j * 4) = a[j]
+		lw   $t2, 0($t1)		# load a[j] in $t2
+		sw   $t2, 4($t1)		# store a[j] in t3 = in a[j + 1]
+		
+		addi $t0, $t0, -1		# j--
+		j for_insert
+
+exit_insert:		
+		sll  $t0, $a3, 2		# i * 4 in $t0
+		add  $t1, $a0, $t0		# $t2 = a + (i * 4) = a[i]
+		sw   $a2, 0($t1)		# a[i] = elem
+		jr $ra
+		
+########### BINSEARCH #############
+
+binsearch:
+		addi $t0, $zero, -1		# $t0 = low = -1
+		move $t1, $a1			# $t1 = high = length
+		
+  while_binsearch:
+  		addi $t2, $t1, -1		# $t2 = high - 1
+		bge $t0, $t2, exit_binsearch	# if low >= high - 1, exit
+		
+		add $t2, $t0, $t1		# $t2 = (low + high)
+		srl $t3, $t2, 1			# $t3 = (low + high) / 2 = mid
+		
+		sll $t4, $t3, 2			# mid * 4
+		add $t4, $t4, $a0		# $t4 + (mid * 4) = a[mid]
+		lw  $t4, 0($t4)			# load a[mid] from memory
+		
+		blt $t4, $a2, else		# a[mid] < elem, go to else
+		move $t1, $t3			# high = mid
+		j while_binsearch
+		
+	else:   move $t0, $t3			# low = mid			
+		j while_binsearch
+exit_binsearch:
+		move $v0, $t1			# put high in $v0
+		jr $ra			
+		
+########### Insertion Sort #############
+
+insertion_sort:	addiu  	$sp, $sp, -16		# make room on the stack for 4 items
+		sw	$ra, 12($sp)		# save $ra on the stack
+		sw	$s0, 8($sp)		# save $s2 on the stack
+		sw	$s1, 4($sp)		# save $s1 on the stack
+		sw	$s2, 0($sp)		# save $s0 on the stack
+
+		move	$s0, $a1		# $s0 = length
+		sll	$t0, $a1, 2		# length * 4 in $t0
+		sub	$sp, $sp, $t0		# make room on stack for b
+		move	$s1, $sp		# store pointer to b in $s1
+		move	$s3, $a0		# $s3 = a[]
+		move	$s2, $zero		# i = 0
+		
+for1:		bge	$s2, $s0, exit_for1	# i >= length, then exit loop
+		move	$a0, $s1		# $a0 = b[]
+		move	$a1, $s2		# $a1 = i
+		sll	$s4, $s2, 2		# $s4 = i * 4
+		add	$s4, $s4, $s3		# $s4 = address of a[i]
+		lw	$s4, 0($s4)		# $s4 = a[i] from mem
+		move	$a2, $s4		# $s2 = a[i]
+		jal	binsearch		# call binsearch
+		move	$a3, $v0		# move return value $a3, for later use
+		jal	insert			# call insert
+		addi	$s2, $s2, 1		# i++
+		j	for1			# jump to for1
+		
+exit_for1: 	move	$t0, $zero		# $t0 = i = 0
+for2:		bge	$t0, $s0, exit_for2     # i >= length, exit loop
+		sll	$t1, $t0, 2		# $t1 = i * 4
+		add	$t2, $t1, $s1		# $t2 = address of b[i]
+		lw	$t2, 0($t2)		# $t2 = b[i] from mem
+		add	$t3, $t1, $s3		# $t3 = a[i] from mem
+		sw	$t2, 0($t3)		# a[i] = b[i]($t2)
+		addi	$t0, $t0, 1		# i++
+		j	for2			# jump to for label
+exit_for2:	sll	$t0, $s0, 2		# $t0 = length * 4
+		add	$sp, $sp, $t0		# addjust stack
+		
+		lw	$s2, 0($sp)		# restore $s2 from the stack
+		lw	$s1, 4($sp)		# restore $s1 from the stack
+		lw	$s0, 8($sp)		# restore $s0 from the stack
+		lw	$ra, 12($sp)		# restore $ra from the stack
+		
+		addiu  	$sp, $sp, 16		# readjust stack for last 4 items
+		jr	$ra			# return
