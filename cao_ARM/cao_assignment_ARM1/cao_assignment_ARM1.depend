@@ -1,0 +1,32 @@
+# depslib dependency file v1.0
+1489160443 source:h:\desktop\git\ee3d11\cao_arm\cao_assignment_arm1\main.c
+	"LPC13xx.h"
+	"delay.h"
+
+1486393758 h:\desktop\git\ee3d11\cao_arm\cao_assignment_arm1\lpc13xx.h
+	"core_cm3.h"
+	"system_LPC13xx.h"
+
+1486393758 h:\desktop\git\ee3d11\cao_arm\cao_assignment_arm1\core_cm3.h
+	<stdint.h>
+	<core_cmInstr.h>
+	<core_cmFunc.h>
+
+1486393758 h:\desktop\git\ee3d11\cao_arm\cao_assignment_arm1\system_lpc13xx.h
+	<stdint.h>
+
+1486393758 source:h:\desktop\git\ee3d11\cao_arm\cao_assignment_arm1\startup.c
+	<stdint.h>
+	"LPC13xx.h"
+
+1486393758 source:h:\desktop\git\ee3d11\cao_arm\cao_assignment_arm1\system_lpc13xx.c
+	<stdint.h>
+	"LPC13xx.h"
+
+1421162233 h:\desktop\git\ee3d11\cao_arm\cao_assignment_arm1\delay.h
+	<stdint.h>
+
+1421936009 source:h:\desktop\git\ee3d11\cao_arm\cao_assignment_arm1\delay.c
+	<stdint.h>
+	"LPC13xx.h"
+
