@@ -14,13 +14,10 @@ static void init(void){
     // Configure PIO3_0 to be output
     LPC_GPIO3->DIR |= (1 << 0);
 }
-static void led_off(void){
-    // Write 1 to PIO3_0 to turn LED off
-    LPC_GPIO3->DATA |= (1 << 0);
-}
-static void led_on(void){
-    // Write 0 to PIO3_0 to turn LED on
-    LPC_GPIO3->DATA &= ~(1 << 0);
+
+static void led_toggle(void){
+    LPC_GPIO3->DATA ^= (1 << 0);
+    delay_ms(100);
 }
 
 static void init_button(void){
@@ -41,15 +38,10 @@ int main (void)
 {
     init();
     init_button();
-
     while(1){
         if(but1_pressed()){
-            led_on();
-        }
-        else{
-            led_off();
+            led_toggle();
         }
     }
-
 
 }
