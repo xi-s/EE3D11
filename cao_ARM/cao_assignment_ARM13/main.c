@@ -11,15 +11,15 @@
 
 static void init(void){
     // Configure PIO3_0 to be output
-    *(volatile uint32_t *) 0x50038000 = 1;
+    LPC_GPIO3->DIR &= 0x1;
 }
 static void led_off(void){
     // Write 1 to PIO3_0 to turn LED off
-    *(volatile uint32_t *) 0x50033FFC = 1;
+    LPC_GPIO3->DATA &= 0x0;
 }
 static void led_on(void){
     // Write 0 to PIO3_0 to turn LED on
-    *(volatile uint32_t *) 0x50033FFC = 0;
+    LPC_GPIO3->DATA &= 0x1;
 }
 
 int main (void)
