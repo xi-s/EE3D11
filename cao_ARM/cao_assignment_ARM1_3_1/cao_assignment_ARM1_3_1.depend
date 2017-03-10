@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1489169914 source:c:\users\laptop\desktop\git\ee3d11\cao_arm\cao_assignment_arm1_3_1\delay.c
+	<stdint.h>
+	"LPC13xx.h"
+
+1489168190 c:\users\laptop\desktop\git\ee3d11\cao_arm\cao_assignment_arm1_3_1\lpc13xx.h
+	"core_cm3.h"
+	"system_LPC13xx.h"
+
+1489168190 c:\users\laptop\desktop\git\ee3d11\cao_arm\cao_assignment_arm1_3_1\core_cm3.h
+	<stdint.h>
+	<core_cmInstr.h>
+	<core_cmFunc.h>
+
+1489168190 c:\users\laptop\desktop\git\ee3d11\cao_arm\cao_assignment_arm1_3_1\system_lpc13xx.h
+	<stdint.h>
+
+1489168190 source:c:\users\laptop\desktop\git\ee3d11\cao_arm\cao_assignment_arm1_3_1\startup.c
+	<stdint.h>
+	"LPC13xx.h"
+
+1489168190 source:c:\users\laptop\desktop\git\ee3d11\cao_arm\cao_assignment_arm1_3_1\system_lpc13xx.c
+	<stdint.h>
+	"LPC13xx.h"
+
+1489174299 source:c:\users\laptop\desktop\git\ee3d11\cao_arm\cao_assignment_arm1_3_1\main.c
+	<stdbool.h>
+	"LPC13xx.h"
+	"delay.h"
+
+1489169914 c:\users\laptop\desktop\git\ee3d11\cao_arm\cao_assignment_arm1_3_1\delay.h
+	<stdint.h>
+

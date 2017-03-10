@@ -1,5 +1,5 @@
 /*
-    name: ARM assignment 1_2
+    name:   ARM assignment 1_2
     date:   10-3-2017
     author: Remy Jaspers 4499336
 
@@ -11,15 +11,15 @@
 
 static void init(void){
     // Configure PIO3_0 to be output
-    LPC_GPIO3->DIR &= 0x1;
+    *(volatile uint32_t *) 0x50038000 = 1;
 }
 static void led_off(void){
     // Write 1 to PIO3_0 to turn LED off
-    LPC_GPIO3->DATA &= 0x0;
+    *(volatile uint32_t *) 0x50033FFC = 1;
 }
 static void led_on(void){
     // Write 0 to PIO3_0 to turn LED on
-    LPC_GPIO3->DATA &= 0x1;
+    *(volatile uint32_t *) 0x50033FFC = 0;
 }
 
 int main (void)
@@ -31,4 +31,3 @@ int main (void)
 
 	while (1) { }
 }
-

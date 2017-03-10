@@ -26,71 +26,71 @@ vectors         0x00000000      0x128
  .vectors       0x00000000      0x128 .objs\startup.o
                 0x00000000                vector_table
 
-.text           0x00000128      0x4ec
+.text           0x00000128      0x4e0
  *(.text.startup)
  *(.text .text*)
  .text          0x00000128       0x88 .objs\delay.o
                 0x00000128                init_delay
                 0x00000168                delay_ms
                 0x0000017c                delay_us
- .text          0x000001b0       0x70 .objs\main.o
-                0x00000204                main
- .text          0x00000220       0x6c .objs\startup.o
-                0x00000220                Reset_Handler
-                0x00000284                HardFault_Handler
-                0x00000284                SysTick_Handler
-                0x00000284                PendSV_Handler
-                0x00000284                NMI_Handler
-                0x00000284                ADC_Handler
-                0x00000284                BOD_Handler
-                0x00000284                EINT3_Handler
-                0x00000284                RESERVED_Handler
-                0x00000284                UsageFault_Handler
-                0x00000284                WDT_Handler
-                0x00000284                TIMER_16_1_Handler
-                0x00000284                DebugMon_Handler
-                0x00000284                Dummy_Handler
-                0x00000284                WAKEUP_Handler
-                0x00000284                I2C_Handler
-                0x00000284                TIMER_32_0_Handler
-                0x00000284                SSP_Handler
-                0x00000284                MemManage_Handler
-                0x00000284                SVC_Handler
-                0x00000284                USB_FIQ_Handler
-                0x00000284                EINT0_Handler
-                0x00000284                UART_Handler
-                0x00000284                EINT2_Handler
-                0x00000284                USB_IRQ_Handler
-                0x00000284                EINT1_Handler
-                0x00000284                TIMER_16_0_Handler
-                0x00000284                TIMER_32_1_Handler
-                0x00000284                BusFault_Handler
- .text          0x0000028c      0x388 .objs\system_LPC13xx.o
-                0x0000028c                SystemCoreClockUpdate
-                0x000004f0                SystemInit
+ .text          0x000001b0       0x64 .objs\main.o
+                0x000001f8                main
+ .text          0x00000214       0x6c .objs\startup.o
+                0x00000214                Reset_Handler
+                0x00000278                HardFault_Handler
+                0x00000278                SysTick_Handler
+                0x00000278                PendSV_Handler
+                0x00000278                NMI_Handler
+                0x00000278                ADC_Handler
+                0x00000278                BOD_Handler
+                0x00000278                EINT3_Handler
+                0x00000278                RESERVED_Handler
+                0x00000278                UsageFault_Handler
+                0x00000278                WDT_Handler
+                0x00000278                TIMER_16_1_Handler
+                0x00000278                DebugMon_Handler
+                0x00000278                Dummy_Handler
+                0x00000278                WAKEUP_Handler
+                0x00000278                I2C_Handler
+                0x00000278                TIMER_32_0_Handler
+                0x00000278                SSP_Handler
+                0x00000278                MemManage_Handler
+                0x00000278                SVC_Handler
+                0x00000278                USB_FIQ_Handler
+                0x00000278                EINT0_Handler
+                0x00000278                UART_Handler
+                0x00000278                EINT2_Handler
+                0x00000278                USB_IRQ_Handler
+                0x00000278                EINT1_Handler
+                0x00000278                TIMER_16_0_Handler
+                0x00000278                TIMER_32_1_Handler
+                0x00000278                BusFault_Handler
+ .text          0x00000280      0x388 .objs\system_LPC13xx.o
+                0x00000280                SystemCoreClockUpdate
+                0x000004e4                SystemInit
  *(.rodata)
  *(.rodata*)
-                0x00000614                _end_text = .
+                0x00000608                _end_text = .
 
-.glue_7         0x00000614        0x0
- .glue_7        0x00000614        0x0 linker stubs
+.glue_7         0x00000608        0x0
+ .glue_7        0x00000608        0x0 linker stubs
 
-.glue_7t        0x00000614        0x0
- .glue_7t       0x00000614        0x0 linker stubs
+.glue_7t        0x00000608        0x0
+ .glue_7t       0x00000608        0x0 linker stubs
 
-.vfp11_veneer   0x00000614        0x0
- .vfp11_veneer  0x00000614        0x0 linker stubs
+.vfp11_veneer   0x00000608        0x0
+ .vfp11_veneer  0x00000608        0x0 linker stubs
 
-.v4_bx          0x00000614        0x0
- .v4_bx         0x00000614        0x0 linker stubs
+.v4_bx          0x00000608        0x0
+ .v4_bx         0x00000608        0x0 linker stubs
 
-.iplt           0x00000614        0x0
- .iplt          0x00000614        0x0 .objs\delay.o
+.iplt           0x00000608        0x0
+ .iplt          0x00000608        0x0 .objs\delay.o
 
-.rel.dyn        0x00000614        0x0
- .rel.iplt      0x00000614        0x0 .objs\delay.o
+.rel.dyn        0x00000608        0x0
+ .rel.iplt      0x00000608        0x0 .objs\delay.o
 
-.data           0x10000000        0xc load address 0x00000614
+.data           0x10000000        0xc load address 0x00000608
                 0x10000000                _start_data = .
  *(.data)
  .data          0x10000000        0x8 .objs\delay.o
@@ -100,10 +100,10 @@ vectors         0x00000000      0x128
                 0x10000008                SystemCoreClock
                 0x1000000c                _end_data = .
 
-.igot.plt       0x1000000c        0x0 load address 0x00000620
+.igot.plt       0x1000000c        0x0 load address 0x00000614
  .igot.plt      0x1000000c        0x0 .objs\delay.o
 
-.bss            0x1000000c        0x4 load address 0x00000620
+.bss            0x1000000c        0x4 load address 0x00000614
                 0x1000000c                _start_bss = .
  *(.bss)
  .bss           0x1000000c        0x4 .objs\delay.o
@@ -115,7 +115,7 @@ vectors         0x00000000      0x128
                 0x10000010                _start_stack = .
                 0x10000010                _end = .
                 [!provide]                PROVIDE (end, .)
-OUTPUT(bin\Release\cao_assignment_ARM13.elf elf32-littlearm)
+OUTPUT(bin\Release\cao_assignment_ARM1_2.elf elf32-littlearm)
 
 .comment        0x00000000       0x6e
  .comment       0x00000000       0x6e .objs\delay.o
