@@ -17,7 +17,6 @@ static void init(void){
 
 static void led_toggle(void){
     LPC_GPIO3->DATA ^= (1 << 0);
-    delay_ms(100);
 }
 
 static void init_button(void){
@@ -40,6 +39,7 @@ int main (void)
     init_button();
     while(1){
         if(but1_pressed()){
+            delay_ms(100);
             led_toggle();
         }
     }
