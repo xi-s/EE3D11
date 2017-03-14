@@ -14,10 +14,10 @@ main:
 		li	$v0, 4			#
 		syscall				#
 
-		li	$v0, 5			# Get the array size(n) and
+		li	$v0, 5			# Get the array length and
 		syscall				# and put it in $v0
-		move	$s2, $v0		# $s2=n
-		sll	$s0, $v0, 2		# $s0=n*4
+		move	$s2, $v0		# $s2= length
+		sll	$s0, $v0, 2		# $s0 = length * 4
 		sub	$sp, $sp, $s0		# This instruction creates a stack
 						# frame large enough to contain
 						# the array
@@ -40,7 +40,7 @@ for_get:	bge	$s1, $s2, exit_get	# if i>=n go to exit_for_get
 		j	for_get
 exit_get:	move	$a0, $sp		# $a0=base address af the array
 		move	$a1, $s2		# $a1=size of the array
-		jal	insertion_sort		# isort(a,n)
+		jal	insertion_sort		# isort(a, length)
 						# In this moment the array has been 
 						# sorted and is in the stack frame 
 		la	$a0, str3		# Print of str3
