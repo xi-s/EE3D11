@@ -14,13 +14,38 @@
 	The lower 16 bits are put into the sign extender, which in this instruction is: \\
 	0000 1000 0010 0101. \\
 	The sign bit is copied to fill the remaining 16 bits, thus the output of the sign extend unit will be:\\
-	0000 0000 0000 0000 0000 1000 0010 0101. \\\\
+	0000 0000 0000 0000 0000 1000 0010 0101. \\
+	At the input of the Adder, this value will be shifted left two bits, thus the value will become:\\
+	0000 0000 0000 0000 0010 0000 1001 0100\\\\
 	The shift left 2 unit will take the lower 26 bits of the instruction and shift these left two bits. The input for this unit is:\\
 	1 1000 0010 0000 1000 0010 0101 \\
 	Shifted left twice to produce:\\
-	1 1000 0010 0000 1000 0010 0101 00\\
-	and will be the Jump address \\\\
-	At the input of the Adder, this value will be shifted left two bits, thus the value will become:\\
-	0000 0000 0000 0000 0010 0000 1001 0100
-	
+	1 1000 0010 0000 1000 0010 0101 00\\\\
+	This will be the output of the shift left 2 unit. The Jump address will be calculated from concatenating PC+4 to this address. The current PC value is not given so we cannot calculate the upper four bits.\\\\
+
+	\section*{1b}
+	\begin{table}[h]
+		\centering
+		\label{my-label}
+		\begin{tabular}{|l|l|}
+			\hline
+		RegDst	&  1\\ \hline
+		ALUSRc	& 0 \\ \hline
+		MemtoReg & 0  \\ \hline
+		RegWrite&  1 \\ \hline
+		MemRead 	&  0\\ \hline
+		MemWrite	&  0 \\ \hline
+		Branch 	&  0\\  \hline
+	 	ALUOp1	&  1\\ \hline
+  		ALUOp2	&  0\\  \hline \end{tabular}
+	\end{table}
+	\section*{1c}
+	As this is an R-format instruction, the new PC value will just be PC+4.
+	\section*{1d}
+	The instruction fetched from the instruction memory is: \\\\
+	\verb|or $at, $t4, $v0| \\\\
+	The values in these registers are provided. \$t4 = R12 = 16 and \$v0 = R2 = -128. These are the inputs to the main ALU.\\
+	16 | -128 = -112 = 0xFFFFFF90 = 1111 1111 1111 1111 1111 111 1001 0000.\\\\
+	The inputs for the Adder are (as given in 1a) 0x00002094, from the shift left 2 unit. The other input comes from the PC+4. Thus the adder performs the calculation 0x00002094 + (PC + 4).
+	\section*{2a}
 \end{document} 
