@@ -1,0 +1,26 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[default,osfigures,scale=0.95]{opensans}
+\usepackage[T1]{fontenc}
+\author{Remy Jaspers - 4499336}
+\title{CAO HW4}
+\begin{document}
+	\maketitle
+	\section*{1a}
+	The lower 16 bits are put into the sign extender, which in this instruction is: \\
+	0000 1000 0010 0101. \\
+	The sign bit is copied to fill the remaining 16 bits, thus the output of the sign extend unit will be:\\
+	0000 0000 0000 0000 0000 1000 0010 0101. \\\\
+	The shift left 2 unit will take the lower 26 bits of the instruction and shift these left two bits. The input for this unit is:\\
+	1 1000 0010 0000 1000 0010 0101 \\
+	Shifted left twice to produce:\\
+	1 1000 0010 0000 1000 0010 0101 00\\
+	and will be the Jump address \\\\
+	At the input of the Adder, this value will be shifted left two bits, thus the value will become:\\
+	0000 0000 0000 0000 0010 0000 1001 0100
+	
+\end{document} 
