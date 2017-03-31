@@ -25,69 +25,69 @@ vectors         0x00000000      0x128
  .vectors       0x00000000      0x128 .objs\startup.o
                 0x00000000                vector_table
 
-.text           0x00000128      0x568
+.text           0x00000128      0x554
  *(.text.startup)
  *(.text .text*)
- .text          0x00000128      0x174 .objs\main.o
+ .text          0x00000128      0x160 .objs\main.o
                 0x0000019c                pin_high
                 0x000001c4                pin_low
-                0x0000024c                main
- .text          0x0000029c       0x6c .objs\startup.o
-                0x0000029c                Reset_Handler
-                0x00000300                HardFault_Handler
-                0x00000300                SysTick_Handler
-                0x00000300                PendSV_Handler
-                0x00000300                NMI_Handler
-                0x00000300                ADC_Handler
-                0x00000300                BOD_Handler
-                0x00000300                EINT3_Handler
-                0x00000300                RESERVED_Handler
-                0x00000300                UsageFault_Handler
-                0x00000300                WDT_Handler
-                0x00000300                TIMER_16_1_Handler
-                0x00000300                DebugMon_Handler
-                0x00000300                Dummy_Handler
-                0x00000300                WAKEUP_Handler
-                0x00000300                I2C_Handler
-                0x00000300                TIMER_32_0_Handler
-                0x00000300                SSP_Handler
-                0x00000300                MemManage_Handler
-                0x00000300                SVC_Handler
-                0x00000300                USB_FIQ_Handler
-                0x00000300                EINT0_Handler
-                0x00000300                UART_Handler
-                0x00000300                EINT2_Handler
-                0x00000300                USB_IRQ_Handler
-                0x00000300                EINT1_Handler
-                0x00000300                TIMER_16_0_Handler
-                0x00000300                TIMER_32_1_Handler
-                0x00000300                BusFault_Handler
- .text          0x00000308      0x388 .objs\system_LPC13xx.o
-                0x00000308                SystemCoreClockUpdate
-                0x0000056c                SystemInit
+                0x00000238                main
+ .text          0x00000288       0x6c .objs\startup.o
+                0x00000288                Reset_Handler
+                0x000002ec                HardFault_Handler
+                0x000002ec                SysTick_Handler
+                0x000002ec                PendSV_Handler
+                0x000002ec                NMI_Handler
+                0x000002ec                ADC_Handler
+                0x000002ec                BOD_Handler
+                0x000002ec                EINT3_Handler
+                0x000002ec                RESERVED_Handler
+                0x000002ec                UsageFault_Handler
+                0x000002ec                WDT_Handler
+                0x000002ec                TIMER_16_1_Handler
+                0x000002ec                DebugMon_Handler
+                0x000002ec                Dummy_Handler
+                0x000002ec                WAKEUP_Handler
+                0x000002ec                I2C_Handler
+                0x000002ec                TIMER_32_0_Handler
+                0x000002ec                SSP_Handler
+                0x000002ec                MemManage_Handler
+                0x000002ec                SVC_Handler
+                0x000002ec                USB_FIQ_Handler
+                0x000002ec                EINT0_Handler
+                0x000002ec                UART_Handler
+                0x000002ec                EINT2_Handler
+                0x000002ec                USB_IRQ_Handler
+                0x000002ec                EINT1_Handler
+                0x000002ec                TIMER_16_0_Handler
+                0x000002ec                TIMER_32_1_Handler
+                0x000002ec                BusFault_Handler
+ .text          0x000002f4      0x388 .objs\system_LPC13xx.o
+                0x000002f4                SystemCoreClockUpdate
+                0x00000558                SystemInit
  *(.rodata)
  *(.rodata*)
-                0x00000690                _end_text = .
+                0x0000067c                _end_text = .
 
-.glue_7         0x00000690        0x0
- .glue_7        0x00000690        0x0 linker stubs
+.glue_7         0x0000067c        0x0
+ .glue_7        0x0000067c        0x0 linker stubs
 
-.glue_7t        0x00000690        0x0
- .glue_7t       0x00000690        0x0 linker stubs
+.glue_7t        0x0000067c        0x0
+ .glue_7t       0x0000067c        0x0 linker stubs
 
-.vfp11_veneer   0x00000690        0x0
- .vfp11_veneer  0x00000690        0x0 linker stubs
+.vfp11_veneer   0x0000067c        0x0
+ .vfp11_veneer  0x0000067c        0x0 linker stubs
 
-.v4_bx          0x00000690        0x0
- .v4_bx         0x00000690        0x0 linker stubs
+.v4_bx          0x0000067c        0x0
+ .v4_bx         0x0000067c        0x0 linker stubs
 
-.iplt           0x00000690        0x0
- .iplt          0x00000690        0x0 .objs\main.o
+.iplt           0x0000067c        0x0
+ .iplt          0x0000067c        0x0 .objs\main.o
 
-.rel.dyn        0x00000690        0x0
- .rel.iplt      0x00000690        0x0 .objs\main.o
+.rel.dyn        0x0000067c        0x0
+ .rel.iplt      0x0000067c        0x0 .objs\main.o
 
-.data           0x10000000        0x4 load address 0x00000690
+.data           0x10000000        0x4 load address 0x0000067c
                 0x10000000                _start_data = .
  *(.data)
  .data          0x10000000        0x0 .objs\main.o
@@ -96,10 +96,10 @@ vectors         0x00000000      0x128
                 0x10000000                SystemCoreClock
                 0x10000004                _end_data = .
 
-.igot.plt       0x10000004        0x0 load address 0x00000694
+.igot.plt       0x10000004        0x0 load address 0x00000680
  .igot.plt      0x10000004        0x0 .objs\main.o
 
-.bss            0x10000004        0x0 load address 0x00000694
+.bss            0x10000004        0x0 load address 0x00000680
                 0x10000004                _start_bss = .
  *(.bss)
  .bss           0x10000004        0x0 .objs\main.o
