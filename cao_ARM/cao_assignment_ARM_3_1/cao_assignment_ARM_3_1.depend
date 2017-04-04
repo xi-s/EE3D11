@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1491291759 source:c:\users\laptop\desktop\git\ee3d11\cao_arm\cao_assignment_arm_3_1\leddriver.c
+	<stdint.h>
+	"LPC13xx.h"
+	"leddriver.h"
+
+1491290925 c:\users\laptop\desktop\git\ee3d11\cao_arm\cao_assignment_arm_3_1\lpc13xx.h
+	"core_cm3.h"
+	"system_LPC13xx.h"
+
+1491290925 c:\users\laptop\desktop\git\ee3d11\cao_arm\cao_assignment_arm_3_1\core_cm3.h
+	<stdint.h>
+	<core_cmInstr.h>
+	<core_cmFunc.h>
+
+1491290925 c:\users\laptop\desktop\git\ee3d11\cao_arm\cao_assignment_arm_3_1\system_lpc13xx.h
+	<stdint.h>
+
+1491291758 c:\users\laptop\desktop\git\ee3d11\cao_arm\cao_assignment_arm_3_1\leddriver.h
+	<stdint.h>
+
+1491290925 source:c:\users\laptop\desktop\git\ee3d11\cao_arm\cao_assignment_arm_3_1\startup.c
+	<stdint.h>
+	"LPC13xx.h"
+
+1491290925 source:c:\users\laptop\desktop\git\ee3d11\cao_arm\cao_assignment_arm_3_1\system_lpc13xx.c
+	<stdint.h>
+	"LPC13xx.h"
+
+1491293047 source:c:\users\laptop\desktop\git\ee3d11\cao_arm\cao_assignment_arm_3_1\delay.c
+	<stdint.h>
+	"LPC13xx.h"
+
