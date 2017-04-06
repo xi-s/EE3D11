@@ -47,8 +47,7 @@ component control
 		aluop		: out std_logic_vector (2 downto 0);
 		memwrite	: out std_logic;
 		alusrc		: out std_logic;
-		regwrite	: out std_logic;
-		link		: in std_logic
+		regwrite	: out std_logic
 	);
 end component;
 

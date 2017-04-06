@@ -1,9 +1,10 @@
 TEST:
-	addi  $1, $0, 1 # $1=1
+	addi  $1, $0, -1 # $1=1
 	addi	$2, $0, 2	# $3=1
 	addi	$3, $0, 3	# $4=2
-	slt   $5, $2, $3 # if $2 < $3, (1 < 2), $5 will become 1
-	beq	$5, $1, DONE # if condition holds, jump to DONE
+	#slt   $5, $2, $3 # if $2 < $3, (1 < 2), $5 will become 1
+	bgezal $2, DONE
+	#beq	$5, $1, DONE # if condition holds, jump to DONE
 	j FAIL
 FAIL:
 	addi  $7, $0, 70

@@ -41,14 +41,13 @@ component control
 		instruction	: in  std_logic_vector (5 downto 0);
 		funct		: in  std_logic_vector (5 downto 0);
 		branch		: out std_logic_vector (1 downto 0);
-		regdst		: out std_logic_vector (1 downto 0);
+		regdst		: out std_logic;
 		memread		: out std_logic;
-		memtoreg	: out std_logic_vector (1 downto 0);
+		memtoreg	: out std_logic;
 		aluop		: out std_logic_vector (2 downto 0);
 		memwrite	: out std_logic;
 		alusrc		: out std_logic;
-		regwrite	: out std_logic;
-		link		: in std_logic
+		regwrite	: out std_logic
 	);
 end component;
 
@@ -117,9 +116,7 @@ component registers
 	);
 end component;
 
-	signal branch, branchalu, regwrite, memread, memwrite, alusrc : std_logic;
-	signal regdst : std_logic_vector(1 downto 0);
-	signal memtoreg : std_logic_vector(1 downto 0);
+	signal branch, branchalu, regwrite, regdst, memread, memtoreg, memwrite, alusrc : std_logic;
 	signal branchcontrol	: std_logic_vector (1 downto 0);
 	signal aluop		: std_logic_vector (2 downto 0);
 	signal aluinstr		: std_logic_vector (4 downto 0);
@@ -128,14 +125,11 @@ end component;
 
 begin
 	with regdst select
-		writereg <=
-				instruction (15 downto 11)	when "01",
-				"11111" when "11",
+		writereg <=	instruction (15 downto 11)	when '1',
 				instruction (20 downto 16)	when others;
 
 	with memtoreg select
-		writedata <=	memorydata			when "01",
-				add_pc when "11",
+		writedata <=	memorydata			when '1',
 				result				when others;
 
 	with alusrc select
@@ -190,14 +184,13 @@ memorymap:	memory		port map (	clk		=> clk,
 controlmap:	control		port map (	instruction	=> instruction (31 downto 26),
 						funct		=> instruction (5 downto 0),
 						branch		=> branchcontrol,
-						regdst		=> regdst (1 downto 0),
+						regdst		=> regdst,
 						memread		=> memread,
-						memtoreg	=> memtoreg (1 downto 0),
+						memtoreg	=> memtoreg,
 						aluop		=> aluop,
 						memwrite	=> memwrite,
 						alusrc		=> alusrc,
-						regwrite	=> regwrite,
-						link => instruction (20)
+						regwrite	=> regwrite
 				);
 
 alucontrolmap:	alucontrol	port map (	aluop		=> aluop,
