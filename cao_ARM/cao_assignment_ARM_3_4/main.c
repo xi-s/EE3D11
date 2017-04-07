@@ -70,19 +70,10 @@ Temperature varies from -127 to 128, range is 256, thus we need 2^8 or 8 bits
 #define I2CSTAT_MT_DATAREC       0x50        // Data received, ACK sent
 #define I2CSTAT_MT_DATARECNAK    0x58        // Data received, NOT ACK sent
 
-uint8_t I2C_status[20];
+uint8_t I2C_status[16];
 uint8_t I2C_statusCount = 0;
 
-void resetArray(void)
-{
-    I2C_statusCount = 0;
-    for(int i = 0; i < 20; i++)
-    {
-        I2C_status[i] = 0xFF;
-    }
-}
-
-void I2C_init(int clockSpeed)
+void I2C_init()
 {
      // Configure pins
     LPC_IOCON->PIO0_4 = 1;  // I2C SCL FUNC standard mode
@@ -92,106 +83,17 @@ void I2C_init(int clockSpeed)
     LPC_SYSCON->PRESETCTRL |= 1 << 1;       // De-assert I2C reset
 
     // Configure clock speed/dutycycle
-    LPC_I2C->SCLH = SystemCoreClock/(clockSpeed * 2);
+    LPC_I2C->SCLH = SystemCoreClock/(100000 * 2);
     LPC_I2C->SCLL = LPC_I2C->SCLH;
 
     LPC_I2C->CONSET |= 1 << 6;  // Enable the I2C interface
 }
 
-
-
-int8_t I2C_writeData(uint8_t address, uint8_t data[], uint8_t len)
-{
-    bool loop = true;
-    uint8_t i = 0;
-
-    // Send start condition
-    LPC_I2C->CONCLR = I2C_SI;
-    LPC_I2C->CONSET = I2C_STA;  //Set STA bit
-
-    while(loop)
-    {
-        // Wait until state changed(something happened)
-        while((LPC_I2C->CONSET & I2C_SI) == 0);
-
-        switch(LPC_I2C->STAT)
-        {
-        case I2CSTAT_START:
-        case I2CSTAT_RSTART:
-            LPC_I2C->DAT = address << 1;
-            LPC_I2C->CONCLR = I2C_STA | I2C_SI;         // Clear STA bit and SI bit
-            break;
-        case I2CSTAT_MR_SLAWSENT:
-        case I2CSTAT_MR_DATASENT:
-            LPC_I2C->DAT = data[i++];
-            LPC_I2C->CONCLR = I2C_SI;                       // Clear SI bit
-            break;
-        default:
-            // We shouldn't receive another type of status so clear bit and send stop
-            LPC_I2C->CONCLR = I2C_SI | I2C_STA | I2C_AA;         // Clear all bits
-            return -1;
-            break;
-        }
-
-        if(i >= len)
-            loop = false;
-    }
-    return 0;
-}
-
-int8_t I2C_readData(uint8_t address, uint8_t data[], uint8_t len)
-{
-    uint8_t rxCount = 0;
-    //  Send start condition
-    LPC_I2C->CONCLR = I2C_SI;         // Clear SI bit
-    LPC_I2C->CONSET = I2C_STA;
-
-    while(rxCount < len)
-    {
-        //set_leds(8);
-        // Wait until state changed(something happened)
-        while((LPC_I2C->CONSET & I2C_SI) == 0);
-
-        switch(LPC_I2C->STAT)
-        {
-        case I2CSTAT_START:
-        case I2CSTAT_RSTART:
-            LPC_I2C->DAT = (address << 1) | 1;
-            LPC_I2C->CONCLR = I2C_STA | I2C_SI;         // Clear STA bit and SI bit
-            break;
-        case I2CSTAT_MT_SLARSENT:
-            LPC_I2C->CONSET = I2C_AA;                       // Ack the data
-            LPC_I2C->CONCLR = I2C_SI;                       // Clear SI bit
-            break;
-        case I2CSTAT_MT_DATAREC:
-            data[rxCount++] = LPC_I2C->DAT;
-            // Don't sent ACK when this is the last bit
-            if(rxCount+1 == len)
-                LPC_I2C->CONCLR = I2C_AA;                   // Clear ack bit
-            LPC_I2C->CONCLR = I2C_SI;                       // Clear SI bit
-            break;
-        case I2CSTAT_MT_DATARECNAK:
-            // Data received + NO ACK sent, send stop condition
-            data[rxCount++] = LPC_I2C->DAT;
-            LPC_I2C->CONSET = I2C_STO;
-            LPC_I2C->CONCLR = I2C_SI;                       // Clear SI bit
-            break;
-        default:
-            // We shouldn't receive another type of status so clear bit and send stop
-            LPC_I2C->CONCLR = I2C_SI | I2C_STA | I2C_AA;         // Clear all bits
-            return -1;
-            break;
-        }
-    }
-
-    return 0;
-}
-
 uint16_t readTemp(uint8_t address)
 {
     uint8_t temp[2];
-    uint8_t writeAddress = (address << 1);
-    uint8_t readAddress = (address << 1) | 1;
+    uint8_t writeAddress = 0x90;
+    uint8_t readAddress = 0x91;
 
     // Send start condition
     LPC_I2C->CONSET = I2C_STA;  //Set STA bit
@@ -254,31 +156,23 @@ uint16_t readTemp(uint8_t address)
 int main (void)
 {
     init_leds();
-    set_leds(0xFF);
-    delay_ms(3000);
-    I2C_init(I2C_CLOCK_SPEED);
-    set_leds(1);
+    I2C_init();
 
-    delay_ms(500);
      while(1)
     {
-        readTemp(TMP201_ADDRESS);
+        readTemp(0x48);
 
         int i = 0;
-        while((i < 20) && (I2C_status[i]!= 0xFF))
+        while((i < 16) && (I2C_status[i]!= 0xFF))
         {
             set_leds(I2C_status[i++]);
             delay_ms(3000);
             set_leds(0xFF);
-            delay_ms(50);
         }
-        resetArray();
-        for(int i = 0; i < 3; i++)
+        I2C_statusCount = 0;
+        for(int i = 0; i < 16; i++)
         {
-            set_leds(0xFF);
-            delay_ms(50);
-            set_leds(0);
-            delay_ms(50);
+            I2C_status[i] = 0xFF;
         }
     }
 }
