@@ -46,9 +46,6 @@ Temperature varies from -127 to 128, range is 256, thus we need 2^8 or 8 bits
 #include "leddriver.h"
 #include "delay.h"
 
-#define I2C_CLOCK_SPEED     100000
-#define TMP201_ADDRESS      0x48
-
 #define I2C_AA          (1 << 2)
 #define I2C_SI          (1 << 3)
 #define I2C_STO         (1 << 4)
